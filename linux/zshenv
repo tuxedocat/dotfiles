@@ -49,6 +49,7 @@ export STANFORD_PARSER_HOME="$HOME/usr/local/stanford-parser-2011-09-14"
 export JAVA_HOME="/usr/lib64/jvm/default-java/"
 export IRSTLM="$HOME/usr/local/irstlm-5.70.04"
 export LD_LIBRARY_PATH="$HOME/root/lib:$HOME/usr/local/irstlm-5.70.04/lib"
+export FANSEPARSER="$WORKDIR/Research/tools/fanseparser/"
 
 export PIP_VIRTUALENV_BASE=$WORKON_HOME
 PIP_RESPECT_VIRTUALENV=true
