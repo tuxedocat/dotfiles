@@ -8,7 +8,7 @@ fi
 
 if [[ $HOST == pine4 ]]; then
     echo Working on pine4
-    export PATH="$WORKDIR/usr/local/bin:$WORKDIR/usr/bin:${PATH}"
+    export PATH="$WORKDIR/usr/local/bin:$WORKDIR/usr/bin:$HOME/usr/local/bin:$HOME/usr/bin:${PATH}"
     export PYTHONZ_ROOT="$WORKDIR/pythonz"
     export PYTHONPATH="${PYTHONPATH}:$WORKDIR/root"
     [[ -s $WORKDIR/pythonz/etc/bashrc ]] && source $WORKDIR/pythonz/etc/bashrc
