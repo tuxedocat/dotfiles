@@ -18,7 +18,7 @@ export WORKON_HOME=$HOME/.virtualenvs
 source `which virtualenvwrapper.sh`
 
 #launchctl setenv PATH $PATH
-# /usr/local/bin/reattach-to-user-namespace launchctl setenv PATH $PATH
+/usr/local/bin/reattach-to-user-namespace launchctl setenv PATH $PATH
 
 # Default eclipse workspace
 export ECLIPSE_WS="$HOME/Documents/workspace"
@@ -29,14 +29,15 @@ export PATH="$HOME/Library/Haskell/bin:${PATH}"
 # TeX live pathes
 export PATH="/usr/local/texlive/2011/bin/x86_64-darwin:${PATH}"
 
-# IRSTLM
-export PATH="${PATH}:/usr/local/irstlm/bin"
+# IRSTLM & SRILM
+export PATH="${PATH}:/usr/local/irstlm/bin:$HOME/Research/tools/srilm/bin"
 export IRSTLM="/usr/local/irstlm"
+export SRILM="$HOME/Research/tools/srilm"
 
 # Maltparser
 export MALTPARSERHOME="$HOME/usr/local/malt-1.6.1"
 
-
 # fanseparser
 export WORKDIR=$HOME
 export FANSEPARSER="$WORKDIR/Research/tools/fanseparser_mod/"
+
