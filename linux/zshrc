@@ -51,7 +51,7 @@ function prompt_char {
 }
 
 function virtualenv_info {
-    [ $VIRTUAL_ENV ] && echo ': working on '`basename $VIRTUAL_ENV`' '
+    [ $VIRTUAL_ENV ] && echo ''`basename $VIRTUAL_ENV`''
 }
 
 zle -N zle-line-init
@@ -59,29 +59,29 @@ zle -N zle-keymap-select
 
 autoload -Uz colors && colors
 PROMPT='
-%{$fg_bold[green]%}%n%{$reset_color%}@%{$fg_bold[green]%}%m%{$reset_color%} in %{$fg_bold[green]%}$(collapsed_pwd)%{$reset_color%} $(virtualenv_info) $(git_prompt_info)
+%{$fg_bold[green]%}%n%{$reset_color%}@%{$fg_bold[green]%}%m%{$reset_color%} in %{$fg_bold[green]%}$(collapsed_pwd) :: %{$reset_color%}$(virtualenv_info) $(git_prompt_info)
 %{$fg[green]%}$(prompt_char)%{$reset_color%} '
 
 function zle-line-init zle-keymap-select {
   case $KEYMAP in
     vicmd)
 PROMPT='
-%{$fg_bold[green]%}%n%{$reset_color%}@%{$fg_bold[green]%}%m%{$reset_color%} in %{$fg_bold[green]%}$(collapsed_pwd)%{$reset_color%} $(virtualenv_info) $(git_prompt_info)
+%{$fg_bold[green]%}%n%{$reset_color%}@%{$fg_bold[green]%}%m%{$reset_color%} in %{$fg_bold[green]%}$(collapsed_pwd) :: %{$reset_color%}$(virtualenv_info) $(git_prompt_info)
 %{$fg[magenta]%}$(prompt_char)%{$reset_color%} '
     ;;
     main|viins)
 PROMPT='
-%{$fg_bold[green]%}%n%{$reset_color%}@%{$fg_bold[green]%}%m%{$reset_color%} in %{$fg_bold[green]%}$(collapsed_pwd)%{$reset_color%} $(virtualenv_info) $(git_prompt_info)
+%{$fg_bold[green]%}%n%{$reset_color%}@%{$fg_bold[green]%}%m%{$reset_color%} in %{$fg_bold[green]%}$(collapsed_pwd) :: %{$reset_color%}$(virtualenv_info) $(git_prompt_info)
 %{$fg[green]%}$(prompt_char)%{$reset_color%} '
     ;;
   esac
   zle reset-prompt
 }
 
-ZSH_THEME_GIT_PROMPT_PREFIX=" on %{$fg[blue]%}"
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[green]%}!"
-ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[green]%}?"
+ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[blue]%}["
+ZSH_THEME_GIT_PROMPT_SUFFIX="]%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_DIRTY="!!"
+ZSH_THEME_GIT_PROMPT_UNTRACKED="??"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
 
 #-------------------------------------------------------------------------------
