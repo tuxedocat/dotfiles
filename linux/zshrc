@@ -36,6 +36,9 @@ plugins=(pip python ant git)
 
 source $ZSH/oh-my-zsh.sh
 
+# autojump
+[[ -s ~/.autojump/etc/profile.d/autojump.zsh ]] && source ~/.autojump/etc/profile.d/autojump.zsh
+
 #-------------------------------------------------------------------------------
 # PROMPT setting                                                                
 #-------------------------------------------------------------------------------
@@ -59,19 +62,19 @@ zle -N zle-keymap-select
 
 autoload -Uz colors && colors
 PROMPT='
-%{$fg_bold[green]%}%n%{$reset_color%}@%{$fg_bold[green]%}%m%{$reset_color%} in %{$fg_bold[green]%}$(collapsed_pwd) :: %{$reset_color%}$(virtualenv_info) $(git_prompt_info)
+%{$fg_bold[green]%}%n@%m%{$reset_color%} in %{$fg_bold[green]%}$(collapsed_pwd) :: $(virtualenv_info) %{$reset_color%}$(git_prompt_info)
 %{$fg[green]%}$(prompt_char)%{$reset_color%} '
 
 function zle-line-init zle-keymap-select {
   case $KEYMAP in
     vicmd)
 PROMPT='
-%{$fg_bold[green]%}%n%{$reset_color%}@%{$fg_bold[green]%}%m%{$reset_color%} in %{$fg_bold[green]%}$(collapsed_pwd) :: %{$reset_color%}$(virtualenv_info) $(git_prompt_info)
+%{$fg_bold[green]%}%n@%{$fg_bold[green]%}%m%{$reset_color%} in %{$fg_bold[green]%}$(collapsed_pwd) :: $(virtualenv_info) %{$reset_color%}$(git_prompt_info)
 %{$fg[magenta]%}$(prompt_char)%{$reset_color%} '
     ;;
     main|viins)
 PROMPT='
-%{$fg_bold[green]%}%n%{$reset_color%}@%{$fg_bold[green]%}%m%{$reset_color%} in %{$fg_bold[green]%}$(collapsed_pwd) :: %{$reset_color%}$(virtualenv_info) $(git_prompt_info)
+%{$fg_bold[green]%}%n@%{$fg_bold[green]%}%m%{$reset_color%} in %{$fg_bold[green]%}$(collapsed_pwd) :: $(virtualenv_info) %{$reset_color%}$(git_prompt_info)
 %{$fg[green]%}$(prompt_char)%{$reset_color%} '
     ;;
   esac
