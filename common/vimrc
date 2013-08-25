@@ -5,8 +5,6 @@ set softtabstop=4
 set shiftwidth=4
 set encoding=utf-8
 set tw=0
-set formatoptions=r
-set clipboard+=unnamed,autoselect
 set showmode
 set showcmd
 set hidden
@@ -279,4 +277,4 @@ let g:Tex_ViewRule_pdf = '/usr/bin/open -a Preview.app'
 "let g:Tex_ViewRule_pdf = '/usr/bin/open -a TeXworks.app'
 
 filetype indent off
-set textwidth=0
+set formatoptions-=tc
