@@ -63,7 +63,8 @@ NeoBundle 'quickrun.vim'
 NeoBundle 'haskell.vim'
 NeoBundle 'Haskell-Highlight-Enhanced'
 NeoBundle 'Solarized'
-NeoBundle 'Lokaltog/vim-powerline'
+NeoBundle 'itchyny/lightline.vim'
+" NeoBundle 'bling/vim-airline'
 NeoBundle 'The-NERD-Commenter'
 NeoBundle 'sjl/gundo.vim'
 
@@ -155,8 +156,8 @@ au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
 " vim-powerline
 set nocompatible
 set laststatus=2
-" let g:Powerline_symbols = 'fancy'
-let g:Powerline_symbols = 'compatible'
+let g:Powerline_symbols = 'fancy'
+" let g:Powerline_symbols = 'compatible'
 " ================
 
 
@@ -236,9 +237,16 @@ let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
 let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
 
-set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 " Always show statusline
 set laststatus=2
-" " Use 256 colours (Use this setting only if your terminal supports 256
 " colours)
-set t_Co=256
+" let g:airline_powerline_fonts = 1
+
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'component': {
+      \   'readonly': '%{&readonly?"":""}',
+      \ },
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '', 'right': '' }
+      \ }
