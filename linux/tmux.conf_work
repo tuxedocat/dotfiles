@@ -61,7 +61,8 @@ bind-key -n F5 refresh-client
 bind-key -n F6 detach
 
 bind-key -n F8 command-prompt "rename-window %%"
-bind-key -n F9 command-prompt "rename-window %%"
+bind-key -n F9 command-prompt
+# bind-key -n F9 command-prompt "rename-window %%"
 bind-key -n F10 new-window
 bind-key -n F11 kill-window
 bind-key -n F12 select-window -t :+
