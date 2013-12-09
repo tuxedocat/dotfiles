@@ -50,3 +50,5 @@ export CORENLP_PATH="$HOME/Research/tools/stanford-corenlp-2012-07-09/"
 
 # Senna
 export SENNAPATH="$HOME/Research/tools/senna/"
+unsetopt mailwarning
+unsetopt mailwarn

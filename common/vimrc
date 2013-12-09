@@ -21,6 +21,7 @@ set tags=~/.tags
 command MD :set filetype=markdown
 let mapleader=','
 nnoremap ; :
+set backspace=indent,eol,start
 
 " NeoBundle
 " =====================================================================
@@ -159,7 +160,7 @@ au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
 " ======================================================================
 
 " vim-powerline
-set nocompatible
+" set nocompatible
 set laststatus=2
 let g:Powerline_symbols = 'fancy'
 " ================

@@ -77,3 +77,5 @@ setopt share_history        # share command history data
 
 ## Virtualenv
 # workon cpython273
+unsetopt mailwarn
+unsetopt mailwarning
