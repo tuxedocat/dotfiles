@@ -52,8 +52,10 @@ alias disabletm="sudo tmutil disable"
 alias t="tmux a"
 
 ## autojump
-[[ -s ~/.autojump/etc/profile.d/autojump.zsh ]] && source ~/.autojump/etc/profile.d/autojump.zsh
-
+export FPATH="$FPATH:/opt/local/share/zsh/site-functions/"
+if [ -f /opt/local/etc/profile.d/autojump.zsh ]; then
+    . /opt/local/etc/profile.d/autojump.zsh
+fi
 #-------------------------------------------------------------------------------
 # Keys                                                                         
 # historical backward/forward search with linehead string binded to ^P/^N
@@ -77,5 +79,3 @@ setopt share_history        # share command history data
 
 ## Virtualenv
 # workon cpython273
-unsetopt mailwarn
-unsetopt mailwarning
