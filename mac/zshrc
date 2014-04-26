@@ -8,14 +8,16 @@
 ## -------------------------------------------------------------------------------
 ## Prezto                                                                      
 ## -------------------------------------------------------------------------------
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-fi
+# if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  # source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+# fi
 
 ## -------------------------------------------------------------------------------
 ## oh-my-zsh
 ## -------------------------------------------------------------------------------
-# source $HOME/.omzsh_load
+source $HOME/.omzsh_load
+source $HOME/dotfiles/mac/prompt.zsh
+
 
 ## -------------------------------------------------------------------------------
 ## zshuery                                                                      
@@ -38,6 +40,7 @@ setopt nolistbeep
 export LESS='-R'
 export LESSOPEN='| /opt/local/bin/src-hilite-lesspipe.sh %s'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+
 ## tmuxinator completion
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 alias sourcez='source ~/.zprofile && source ~/.zshrc'
