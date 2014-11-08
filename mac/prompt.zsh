@@ -20,20 +20,17 @@ zle -N zle-line-init
 zle -N zle-keymap-select
 
 autoload -Uz colors && colors
-PROMPT='
-%{$fg_bold[blue]%}%n@%m%{$reset_color%} in %{$fg_bold[blue]%}$(collapsed_pwd) :: $(virtualenv_info) %{$reset_color%}$(git_prompt_info)
+PROMPT='%{$fg_bold[blue]%}%n@%m%{$reset_color%} in %{$fg_bold[blue]%}$(collapsed_pwd) :: $(virtualenv_info) %{$reset_color%}$(git_prompt_info)
 %{$fg[blue]%}$(prompt_char)%{$reset_color%} '
 
 function zle-line-init zle-keymap-select {
   case $KEYMAP in
     vicmd)
-PROMPT='
-%{$fg_bold[blue]%}%n@%m%{$reset_color%} in %{$fg_bold[blue]%}$(collapsed_pwd) :: $(virtualenv_info) %{$reset_color%}$(git_prompt_info)
+PROMPT='%{$fg_bold[blue]%}%n@%m%{$reset_color%} in %{$fg_bold[blue]%}$(collapsed_pwd) :: $(virtualenv_info) %{$reset_color%}$(git_prompt_info)
 %{$fg[magenta]%}$(prompt_char)%{$reset_color%} '
     ;;
     main|viins)
-PROMPT='
-%{$fg_bold[blue]%}%n@%m%{$reset_color%} in %{$fg_bold[blue]%}$(collapsed_pwd) :: $(virtualenv_info) %{$reset_color%}$(git_prompt_info)
+PROMPT='%{$fg_bold[blue]%}%n@%m%{$reset_color%} in %{$fg_bold[blue]%}$(collapsed_pwd) :: $(virtualenv_info) %{$reset_color%}$(git_prompt_info)
 %{$fg[blue]%}$(prompt_char)%{$reset_color%} '
     ;;
   esac
