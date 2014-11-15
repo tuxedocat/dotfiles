@@ -6,7 +6,7 @@
 # oh-my-zsh
 #
 source ${ZDOTDIR}/.omzsh_load
-source ${ZDOTDIR}/.prompt.zsh
+# source ${ZDOTDIR}/.prompt.zsh
 
 
 #
@@ -37,7 +37,6 @@ setopt share_history        # share command history data
 # Alias
 #
 alias ls="gls --color=auto"
-alias sourcez='source ~/.zprofile && source ~/.zshrc'
 alias backupnow="tmutil startbackup"
 alias enabletm="sudo tmutil enable"
 alias disabletm="sudo tmutil disable"
