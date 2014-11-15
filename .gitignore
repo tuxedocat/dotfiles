@@ -3,3 +3,6 @@ dotfiles.sublime-workspace
 dotfiles.sublime-project
 gitconfig
 git_config
+*.swp
+*.png
+.zcompdump-*

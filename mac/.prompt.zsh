@@ -1,6 +1,6 @@
-#-------------------------------------------------------------------------------
+#
 # PROMPT setting                                                                
-#-------------------------------------------------------------------------------
+#
 USERNAME=whoami
 function collapsed_pwd {
     echo $(pwd | sed -e "s,^$HOME,~,")
@@ -42,4 +42,3 @@ ZSH_THEME_GIT_PROMPT_SUFFIX="]%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[magenta]%}!!"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[magenta]%}??"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
-

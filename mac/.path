@@ -1,0 +1,26 @@
+# 
+# PATH settings                                                                
+# 
+
+# Setting general PATH
+export PATH="/usr/local/bin:${HOME}/usr/local/bin:/usr/local/sbin:${PATH}"
+
+# Add GHC 7.8.3 to the PATH, via http://ghcformacosx.github.io/
+export GHC_DOT_APP="/opt/homebrew-cask/Caskroom/ghc/7.8.3-r1/ghc-7.8.3.app"
+if [ -d "$GHC_DOT_APP" ]; then
+    export PATH="${HOME}/.cabal/bin:${GHC_DOT_APP}/Contents/bin:${PATH}"
+fi
+
+
+#
+# NLP
+#
+# fanseparser
+export WORKDIR=${HOME}
+export FANSEPARSER="$WORKDIR/Research/tools/fanseparser_mod/"
+
+# corenlp
+export CORENLP_PATH="${HOME}Research/tools/stanford-corenlp-2012-07-09/"
+
+# Senna
+export SENNAPATH="${HOME}Research/tools/senna/"

@@ -15,7 +15,7 @@ fi
 #
 
 export EDITOR='vim'
-export VISUAL='nano'
+export VISUAL='subl -w'
 export PAGER='less'
 
 #
@@ -71,3 +71,7 @@ if [[ ! -d "$TMPPREFIX" ]]; then
   mkdir -p "$TMPPREFIX"
 fi
 
+#
+# ZDOTDIR
+#
+export ZDOTDIR=${HOME}/dotfiles/mac
