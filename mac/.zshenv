@@ -3,6 +3,11 @@
 #
 
 #
+# ZDOTDIR
+#
+export ZDOTDIR=${HOME}/dotfiles/mac
+
+#
 # Browser
 #
 
@@ -13,7 +18,6 @@ fi
 #
 # Editors
 #
-
 export EDITOR='vim'
 export VISUAL='subl -w'
 export PAGER='less'
@@ -21,7 +25,6 @@ export PAGER='less'
 #
 # Language
 #
-
 if [[ -z "$LANG" ]]; then
   export LANG='en_US.UTF-8'
 fi
@@ -29,8 +32,8 @@ fi
 #
 # Paths
 #
-
 typeset -gU cdpath fpath mailpath path
+source ${ZDOTDIR}/.path
 
 # Set the the list of directories that cd searches.
 # cdpath=(
@@ -42,6 +45,7 @@ path=(
   /usr/local/{bin,sbin}
   $path
 )
+
 
 #
 # Less
@@ -70,8 +74,3 @@ TMPPREFIX="${TMPDIR%/}/zsh"
 if [[ ! -d "$TMPPREFIX" ]]; then
   mkdir -p "$TMPPREFIX"
 fi
-
-#
-# ZDOTDIR
-#
-export ZDOTDIR=${HOME}/dotfiles/mac
