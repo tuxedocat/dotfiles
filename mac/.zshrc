@@ -61,7 +61,13 @@ zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 bindkey "^P" history-beginning-search-backward-end
 bindkey "^N" history-beginning-search-forward-end
-  
+
+
+#
+# Paths
+#  
+source ${ZDOTDIR}/.path
+
 
 #
 # devtools/pyenv
@@ -71,3 +77,13 @@ if [ -d "${PYENV_ROOT}" ]; then
     export PATH=${PYENV_ROOT}/bin:$PATH
     eval "$(pyenv init -)"
 fi
+
+#
+# devtools/rbenv
+# 
+export PATH="${HOME}/.rbenv/bin:${PATH}"
+if which rbenv > /dev/null
+then
+    eval "$(rbenv init - zsh)"
+fi
+
