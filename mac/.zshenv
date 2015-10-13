@@ -19,7 +19,7 @@ fi
 # Editors
 #
 export EDITOR='vim'
-export VISUAL='subl -w'
+export VISUAL='atom'
 export PAGER='less'
 
 #

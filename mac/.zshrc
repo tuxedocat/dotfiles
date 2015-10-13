@@ -12,14 +12,13 @@ source ${ZDOTDIR}/.omzsh_load
 #
 # Settings                                                                   
 #
-export EDITOR='vim'
-export VISUAL='subl -w'
 setopt noautoremoveslash
 setopt list_packed
 setopt auto_pushd
 export TERM=xterm-256color
 setopt nolistbeep
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+disable r
 
 ## Command history configuration
 HISTFILE=~/.zsh_history
@@ -27,11 +26,6 @@ HISTSIZE=100000
 SAVEHIST=100000
 setopt hist_ignore_dups     # ignore duplication command history list
 setopt share_history        # share command history data
-
-
-## tmuxinator completion
-[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
-# eval `gdircolors -b $HOME/dotfiles/common/dircolors.256dark`
 
 #
 # Alias
@@ -41,13 +35,6 @@ alias backupnow="tmutil startbackup"
 alias enabletm="sudo tmutil enable"
 alias disabletm="sudo tmutil disable"
 alias t="tmux a"
-
-## autojump
-export FPATH="$FPATH:/opt/local/share/zsh/site-functions/"
-if [ -f /opt/local/etc/profile.d/autojump.zsh ]; then
-    . /opt/local/etc/profile.d/autojump.zsh
-fi
-
 
 #
 # Keys                                                                         
@@ -67,23 +54,3 @@ bindkey "^N" history-beginning-search-forward-end
 # Paths
 #  
 source ${ZDOTDIR}/.path
-
-
-#
-# devtools/pyenv
-# 
-export PYENV_ROOT="${HOME}/.pyenv"
-if [ -d "${PYENV_ROOT}" ]; then
-    export PATH=${PYENV_ROOT}/bin:$PATH
-    eval "$(pyenv init -)"
-fi
-
-#
-# devtools/rbenv
-# 
-export PATH="${HOME}/.rbenv/bin:${PATH}"
-if which rbenv > /dev/null
-then
-    eval "$(rbenv init - zsh)"
-fi
-
