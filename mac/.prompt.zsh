@@ -1,5 +1,5 @@
 #
-# PROMPT setting                                                                
+# PROMPT setting
 #
 USERNAME=whoami
 function collapsed_pwd {

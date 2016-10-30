@@ -3,10 +3,12 @@
 #
 
 #
-# Prompt
+# Init.
 #
 autoload -U promptinit; promptinit
 prompt pure
+autoload -U compinit
+compinit
 
 
 #
@@ -19,6 +21,7 @@ export TERM=xterm-256color
 setopt nolistbeep
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 disable r
+fpath=(/usr/local/share/zsh-completions $fpath)
 
 ## Command history configuration
 HISTFILE=~/.zsh_history
