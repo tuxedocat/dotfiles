@@ -18,7 +18,8 @@ fi
 #
 # Editors
 #
-export EDITOR='vim'
+export EDITOR='nvim'
+alias vim=nvim
 export VISUAL='atom'
 export PAGER='less'
 

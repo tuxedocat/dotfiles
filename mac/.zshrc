@@ -3,14 +3,14 @@
 #
 
 #
-# oh-my-zsh
+# Prompt
 #
-source ${ZDOTDIR}/.omzsh_load
-# source ${ZDOTDIR}/.prompt.zsh
+autoload -U promptinit; promptinit
+prompt pure
 
 
 #
-# Settings                                                                   
+# Settings
 #
 setopt noautoremoveslash
 setopt list_packed
@@ -37,7 +37,7 @@ alias disabletm="sudo tmutil disable"
 alias t="tmux a"
 
 #
-# Keys                                                                         
+# Keys
 #
 bindkey -e
 bindkey "\e[Z" reverse-menu-complete
@@ -52,5 +52,6 @@ bindkey "^N" history-beginning-search-forward-end
 
 #
 # Paths
-#  
+#
 source ${ZDOTDIR}/.path
+export LC_ALL=en_US.UTF-8
