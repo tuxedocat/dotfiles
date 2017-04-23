@@ -34,6 +34,8 @@ setopt share_history        # share command history data
 # Alias
 #
 alias ls="gls --color=auto"
+alias ll="gls -lh --color=auto"
+alias la="gls -lah --color=auto"
 alias backupnow="tmutil startbackup"
 alias enabletm="sudo tmutil enable"
 alias disabletm="sudo tmutil disable"

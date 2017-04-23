@@ -1,6 +1,30 @@
-# 
-# PATH settings                                                                
-# 
+#!/bin/sh
+
+#
+# Browser
+#
+
+if [[ "$OSTYPE" == darwin* ]]; then
+  export BROWSER='open'
+fi
+
+#
+# Editors
+#
+export EDITOR='vim'
+export VISUAL='atom'
+export PAGER='less'
+
+#
+# Language
+#
+if [[ -z "$LANG" ]]; then
+  export LANG='en_US.UTF-8'
+fi
+
+#
+# Paths
+#
 
 # Setting general PATH
 export PATH="/usr/local/bin:${HOME}/usr/local/bin:/usr/local/sbin:${PATH}"
@@ -10,3 +34,16 @@ export GHC_DOT_APP="/opt/homebrew-cask/Caskroom/ghc/7.8.3-r1/ghc-7.8.3.app"
 if [ -d "$GHC_DOT_APP" ]; then
     export PATH="${HOME}/.cabal/bin:${GHC_DOT_APP}/Contents/bin:${PATH}"
 fi
+
+# Add GHC 7.10.2 to the PATH, via https://ghcformacosx.github.io/
+export GHC_DOT_APP="/Applications/ghc-7.10.2.app"
+if [ -d "$GHC_DOT_APP" ]; then
+  export PATH="${HOME}/.local/bin:${HOME}/.cabal/bin:${GHC_DOT_APP}/Contents/bin:${PATH}"
+fi
+
+
+# For NeoVim
+export XDG_CONFIG_HOME=$HOME/.config
+
+# added by Miniconda3 4.3.11 installer
+export PATH="${HOME}/miniconda3/bin:$PATH"
