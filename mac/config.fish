@@ -12,6 +12,7 @@ alias backupnow "tmutil startbackup"
 alias enabletm "sudo tmutil enable"
 alias disabletm "sudo tmutil disable"
 alias t "tmux a"
+alias vim "nvim"
 
 set -x EDITOR 'nvim'
 set -x VISUAL 'atom'
