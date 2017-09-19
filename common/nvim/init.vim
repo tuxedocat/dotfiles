@@ -17,8 +17,21 @@ call dein#add('Shougo/dein.vim')
 call dein#add('Shougo/neosnippet.vim')
 call dein#add('Shougo/neosnippet-snippets')
 
+" Keymap
+call dein#add('tpope/vim-unimpaired')
+
+" Editorconfig
+call dein#add('editorconfig/editorconfig-vim')
+
 " Scala
 call dein#add('derekwyatt/vim-scala')
+call dein#add('ensime/ensime-vim')
+
+" Colorscheme
+call dein#add('arcticicestudio/nord-vim')
+
+" CoPL syntax
+call dein#add('ymyzk/vim-copl')
 
 " You can specify revision/branch/tag.
 call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
@@ -48,6 +61,9 @@ set fileencodings=utf-8
 
 "" Fix backspace indent
 set backspace=indent,eol,start
+
+"" Use clipboard on macos
+set clipboard=unnamed
 
 "" Tabs. May be overriten by autocmd rules
 set tabstop=4
@@ -136,6 +152,8 @@ set titleold="Terminal"
 set titlestring=%F
 
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
+
+colorscheme nord
 
 "*****************************************************************************
 "" Abbreviations
