@@ -20,6 +20,9 @@ call dein#add('Shougo/neosnippet-snippets')
 " Keymap
 call dein#add('tpope/vim-unimpaired')
 
+" Editorconfig
+call dein#add('editorconfig/editorconfig-vim')
+
 " Scala
 call dein#add('derekwyatt/vim-scala')
 call dein#add('ensime/ensime-vim')
@@ -58,6 +61,9 @@ set fileencodings=utf-8
 
 "" Fix backspace indent
 set backspace=indent,eol,start
+
+"" Use clipboard on macos
+set clipboard=unnamed
 
 "" Tabs. May be overriten by autocmd rules
 set tabstop=4

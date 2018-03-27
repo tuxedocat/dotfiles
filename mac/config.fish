@@ -15,7 +15,7 @@ alias t "tmux a"
 alias vim "nvim"
 
 set -x EDITOR 'nvim'
-set -x VISUAL 'atom'
+set -x VISUAL 'nvim'
 set -x PAGER 'less'
 
 #
