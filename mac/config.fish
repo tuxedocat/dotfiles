@@ -43,9 +43,12 @@ end
 # Setting general PATH
 set -x PATH /usr/local/bin ~/usr/local/bin /usr/local/sbin $PATH
 
+# Coreutils
+set -x PATH /usr/local/opt/coreutils/libexec/gnubin $PATH
+set -x MANPATH /usr/local/opt/coreutils/libexec/gnuman $MANPATH
+
 # For NeoVim
 set -x XDG_CONFIG_HOME $HOME/.config
 
-# Miniconda for fish shell
-set -x PATH ~/miniconda3/bin $PATH
-source ~/miniconda3/etc/fish/conf.d/conda.fish
+# MeCab NEologd
+set -x NEOLOGD /usr/local/Cellar/mecab/0.996/lib/mecab/dic/mecab-ipadic-neologd

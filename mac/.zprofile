@@ -1,3 +1,1 @@
-#
-# Executes commands at login pre-zshrc.
-#
+emulate sh -c 'source /etc/profile'
