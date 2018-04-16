@@ -33,6 +33,8 @@ call dein#add('posva/vim-vue')
 "call dein#add('critiqjo/lldb.nvim')
 "call dein#add('zchee/deoplete-clang')
 
+" toml syntax
+call dein#add('cespare/vim-toml')
 
 " Scala
 call dein#add('derekwyatt/vim-scala')
