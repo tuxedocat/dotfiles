@@ -1,73 +1,45 @@
-"dein Scripts-----------------------------
-if &compatible
-  set nocompatible               " Be iMproved
-endif
+" Specify a directory for plugins
+" - For Neovim: ~/.local/share/nvim/plugged
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.local/share/nvim/plugged')
 
-" Required:
-set runtimepath+=~/.config/nvim/dein/repos/github.com/Shougo/dein.vim
+" Make sure you use single quotes
 
-" Required:
-call dein#begin('~/.config/nvim/dein')
+Plug 'w0rp/ale'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-surround'
+Plug 'easymotion/vim-easymotion'
+Plug 'posva/vim-vue'
+Plug 'cespare/vim-toml'
+Plug 'derekwyatt/vim-scala'
+Plug 'ensime/ensime-vim'
+Plug 'arcticicestudio/nord-vim'
+Plug 'zchee/deoplete-jedi'
+Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'plytophogy/vim-virtualenv'
 
-" Let dein manage dein
-" Required:
-call dein#add('Shougo/dein.vim')
+" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+Plug 'junegunn/vim-easy-align'
 
-" Add or remove your plugins here:
-"call dein#add('Shougo/neosnippet.vim')
-"call dein#add('Shougo/neosnippet-snippets')
-"call dein#add('Shougo/deoplete.nvim')
-" call dein#add('neomake/neomake')
-call dein#add('w0rp/ale')
+" Any valid git URL is allowed
+" Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 
-call dein#add('editorconfig/editorconfig-vim')
-call dein#add('tpope/vim-unimpaired')
-call dein#add('tpope/vim-sensible')
-call dein#add('tpope/vim-surround')
-call dein#add('easymotion/vim-easymotion')
+" Multiple Plug commands can be written in a single line using | separators
+" Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
-" Vue.js
-call dein#add('posva/vim-vue')
+" On-demand loading
+" Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+" Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
-" Cpp
-"call dein#add('critiqjo/lldb.nvim')
-"call dein#add('zchee/deoplete-clang')
+" Plugin options
+Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
 
-" toml syntax
-call dein#add('cespare/vim-toml')
+" Plugin outside ~/.vim/plugged with post-update hook
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
-" Scala
-call dein#add('derekwyatt/vim-scala')
-call dein#add('ensime/ensime-vim')
-
-" Colorscheme
-call dein#add('arcticicestudio/nord-vim')
-
-" Completion
-call dein#add('zchee/deoplete-jedi')
-
-" Python
-call dein#add('Vimjas/vim-python-pep8-indent')
-call dein#add('plytophogy/vim-virtualenv')
-
-" You can specify revision/branch/tag.
-" call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
-
-" Required:
-call dein#end()
-call dein#save_state()
-
-" Required:
-filetype plugin indent on
-syntax enable
-
-" If you want to install not installed plugins on startup.
-if dein#check_install()
-  call dein#install()
-endif
-
-"End dein Scripts-------------------------
-
+" Initialize plugin system
+call plug#end()
 
 "*****************************************************************************"
 "" Basic Setup
