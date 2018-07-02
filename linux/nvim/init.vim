@@ -18,6 +18,7 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'zchee/deoplete-jedi'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'plytophogy/vim-virtualenv'
+Plug 'ekalinin/Dockerfile.vim'
 
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'junegunn/vim-easy-align'
