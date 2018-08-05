@@ -10,14 +10,12 @@ setopt share_history
 
 # Envvars
 export SHELL=/usr/local/bin/zsh
-export EDITOR='nvim'
-export VISUAL='atom'
-export PAGER='less'
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export PATH="/usr/local/bin:${HOME}/usr/local/bin:/usr/local/sbin:${PATH}"
 
 # Minimal settings
+export PURE_PROMPT_SYMBOL='> '
 source ${HOME}/.slimzsh/slim.zsh
 source ${HOME}/.zsh_autosuggestions/zsh-autosuggestions.zsh
 source ${HOME}/.zplug/init.zsh
@@ -33,7 +31,6 @@ fi
 alias ls='gls --color=auto'
 alias ll='ls -lh'
 alias la='ls -alh'
-alias vim='nvim'
 
 # Keys, Completions
 bindkey -e

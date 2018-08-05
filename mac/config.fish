@@ -12,10 +12,10 @@ alias backupnow "tmutil startbackup"
 alias enabletm "sudo tmutil enable"
 alias disabletm "sudo tmutil disable"
 alias t "tmux a"
-alias vim "nvim"
+alias vim "vim"
 
-set -x EDITOR 'nvim'
-set -x VISUAL 'nvim'
+set -x EDITOR 'vim'
+set -x VISUAL 'vim'
 set -x PAGER 'less'
 
 #
