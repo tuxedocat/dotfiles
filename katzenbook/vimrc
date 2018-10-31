@@ -1,54 +1,55 @@
-"dein Scripts-----------------------------
-if &compatible
-  set nocompatible               " Be iMproved
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-" Required:
-set runtimepath+=~/.config/nvim/dein/repos/github.com/Shougo/dein.vim
+" Specify a directory for plugins
+" - For Neovim: ~/.local/share/nvim/plugged
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
 
-" Required:
-call dein#begin('~/.config/nvim/dein')
+" Make sure you use single quotes
 
-" Let dein manage dein
-" Required:
-call dein#add('Shougo/dein.vim')
+" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-unimpaired'
+Plug 'easymotion/vim-easymotion'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'derekwyatt/vim-scala'
+" Plug 'ensime/ensime-vim'
+Plug 'ymyzk/vim-copl'
+Plug 'arcticicestudio/nord-vim'
 
-" Add or remove your plugins here:
-call dein#add('Shougo/neosnippet.vim')
-call dein#add('Shougo/neosnippet-snippets')
+Plug 'junegunn/vim-easy-align'
 
-" Keymap
-call dein#add('tpope/vim-unimpaired')
+" Any valid git URL is allowed
+" Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 
-" Editorconfig
-call dein#add('editorconfig/editorconfig-vim')
+" Multiple Plug commands can be written in a single line using | separators
+" Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
-" Scala
-call dein#add('derekwyatt/vim-scala')
-call dein#add('ensime/ensime-vim')
+" On-demand loading
+" Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+" Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
-" Colorscheme
-call dein#add('arcticicestudio/nord-vim')
+" Using a non-master branch
+" Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
-" CoPL syntax
-call dein#add('ymyzk/vim-copl')
+" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
+" Plug 'fatih/vim-go', { 'tag': '*' }
 
-" You can specify revision/branch/tag.
-call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
+" Plugin options
+" Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
 
-" Required:
-call dein#end()
+" Plugin outside ~/.vim/plugged with post-update hook
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
-" Required:
-filetype plugin indent on
-syntax enable
+" Unmanaged plugin (manually installed and updated)
+" Plug '~/my-prototype-plugin'
 
-" If you want to install not installed plugins on startup.
-if dein#check_install()
-  call dein#install()
-endif
-
-"End dein Scripts-------------------------
+" Initialize plugin system
+call plug#end()
 
 
 "*****************************************************************************"

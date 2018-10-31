@@ -1,4 +1,3 @@
 #
 # Executes commands at login pre-zshrc.
 #
-export PATH="$HOME/.cargo/bin:$PATH"
