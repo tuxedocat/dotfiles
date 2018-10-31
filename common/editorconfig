@@ -16,3 +16,7 @@ trim_trailing_whitespace = false
 
 [*.{scala,sc,class,java}]
 indent_size = 2
+
+[*.go]
+indent_style = tab
+indent_size = 8
