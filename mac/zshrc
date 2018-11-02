@@ -12,7 +12,7 @@ setopt no_auto_remove_slash
 # Envvars
 export SHELL=/usr/local/bin/zsh
 export EDITOR='vim'
-export VISUAL='atom'
+export VISUAL='code'
 export PAGER='less'
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
@@ -21,7 +21,7 @@ export PATH="${HOME}/.cargo/bin:${PATH}"
 
 # Minimal settings
 source ${HOME}/.slimzsh/slim.zsh
-source ${HOME}/.zsh_autosuggestions/zsh-autosuggestions.zsh
+source ${HOME}/.zsh-autosuggestions/zsh-autosuggestions.zsh
 source ${HOME}/.zplug/init.zsh
 unsetopt correct_all
 
