@@ -52,5 +52,8 @@ function use-conda(){
 	. "${HOME}/miniconda3/etc/profile.d/conda.sh"
 }
 
+function use-pyenv(){
+    eval "$(pyenv init -)"
+}
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
