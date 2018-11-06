@@ -1,12 +1,12 @@
 module.exports = {
     config: {
         // default font size in pixels for all tabs
-        fontSize: 13,
+        fontSize: 12,
 
         lineHeight: 1.1,
 
         // font family with optional fallbacks
-        fontFamily: '"Source Code Pro"',
+        fontFamily: '"Source Han Code JP","Source Code Pro"',
         fontWeight: '100',
         fontWeightBold: '200',
 
