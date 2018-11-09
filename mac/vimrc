@@ -96,7 +96,19 @@ set noswapfile
 set fileformats=unix,dos,mac
 set showcmd
 set shell=/bin/sh
-set mouse=a
+
+"" Mouse
+" Using the mouse on a terminal.
+if has('mouse')
+  set mouse=a
+  if has('mouse_sgr')
+    set ttymouse=sgr
+  elseif v:version > 703 || v:version is 703 && has('patch632') " I couldn't use has('mouse_sgr') :-(
+    set ttymouse=sgr
+  else
+    set ttymouse=xterm2
+  endif
+endif
 
 " session management
 "let g:session_directory = "~/.vim/session"
@@ -182,5 +194,5 @@ set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
