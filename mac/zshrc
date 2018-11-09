@@ -57,3 +57,4 @@ function use-pyenv(){
 }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+eval "$(pyenv init -)"
