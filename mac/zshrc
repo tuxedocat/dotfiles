@@ -41,6 +41,8 @@ bindkey -e
 bindkey "\e[Z" reverse-menu-complete
 bindkey -a 'q' push-line
 bindkey -a 'H' run-help
+bindkey "^F" forward-char
+bindkey "^B" backward-char
 autoload history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
