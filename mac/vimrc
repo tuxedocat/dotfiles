@@ -17,6 +17,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'arcticicestudio/nord-vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'vim-syntastic/syntastic'
+Plug 'ervandew/supertab'
 
 "" Language specific plugins
 Plug 'derekwyatt/vim-scala'
@@ -148,6 +149,8 @@ else
   endif
 endif
 
+colorscheme nord
+
 "if &term =~ '256color'
 "  set t_ut=
 "endif
@@ -169,7 +172,26 @@ set titlestring=%F
 
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
 
-colorscheme nord
+
+""*****************************************************************************
+"" Completion
+""*****************************************************************************
+"" Don't use the first one
+set completeopt=longest,menuone
+
+
+""*****************************************************************************
+"" Keymaps
+""*****************************************************************************
+"" omnicomplete
+inoremap <C-Space> <C-x><C-o>
+inoremap <C-@> <C-Space>
+inoremap <leader>, <C-x><C-o>
+
+"" supertab
+let g:SuperTabDefaultCompletionType = 'context'
+let g:SuperTabContextDefaultCompletionType = '<c-x><c-o>'
+
 
 ""*****************************************************************************
 "" Abbreviations
@@ -198,3 +220,13 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
+
+
+""*****************************************************************************
+"" Racer (rust)
+""*****************************************************************************
+let g:racer_experimental_completer = 1
+au FileType rust nmap gd <Plug>(rust-def)
+au FileType rust nmap gs <Plug>(rust-def-split)
+au FileType rust nmap gx <Plug>(rust-def-vertical)
+au FileType rust nmap <leader>gd <Plug>(rust-doc)
