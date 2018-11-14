@@ -15,11 +15,13 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'arcticicestudio/nord-vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'vim-syntastic/syntastic'
 Plug 'ervandew/supertab'
 Plug 'ap/vim-buftabline'
+
+"" Aesthetics
+Plug 'arcticicestudio/nord-vim'
 
 "" Language specific plugins
 Plug 'derekwyatt/vim-scala'

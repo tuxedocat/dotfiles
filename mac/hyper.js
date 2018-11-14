@@ -90,7 +90,8 @@ module.exports = {
     //   `project#1.0.1`
     plugins: [
         'hyper-pane',
-        'hyper-aurora',
+        'hyper-city-lights',
+        // 'hyper-aurora',
         //   'hyper-loved',
         //   'hyper-ayu-mirage',
         //   'hyper-darkmatter',
