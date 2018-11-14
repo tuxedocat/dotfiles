@@ -22,6 +22,8 @@ Plug 'ap/vim-buftabline'
 
 "" Aesthetics
 Plug 'arcticicestudio/nord-vim'
+Plug 'whatyouhide/vim-gotham'
+Plug '~/vim-citylights' " Prototype
 
 "" Language specific plugins
 Plug 'derekwyatt/vim-scala'
@@ -126,6 +128,7 @@ let g:session_command_aliases = 1
 ""*****************************************************************************
 "" Visual Settings
 ""*****************************************************************************
+colorscheme nord
 syntax on
 set ruler
 set number
@@ -133,7 +136,6 @@ set number
 let no_buffers_menu=1
 
 set mousemodel=popup
-"set t_Co=256
 set cursorline
 set guioptions=egmrti
 set gfn=Monospace\ 10
@@ -153,11 +155,9 @@ else
   endif
 endif
 
-colorscheme nord
-
-"if &term =~ '256color'
-"  set t_ut=
-"endif
+if &term =~ '256color'
+  set t_ut=
+endif
 
 "" Disable the blinking cursor.
 set gcr=a:blinkon0

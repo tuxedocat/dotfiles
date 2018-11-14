@@ -90,13 +90,14 @@ module.exports = {
     //   `project#1.0.1`
     plugins: [
         'hyper-pane',
+        // 'hyperterm-gotham',
         'hyper-city-lights',
         // 'hyper-aurora',
-        //   'hyper-loved',
-        //   'hyper-ayu-mirage',
-        //   'hyper-darkmatter',
-        //   'hyperterm-deep-space'
-        //   'nord-hyper',
+        //  'hyper-loved',
+        //  'hyper-ayu-mirage',
+        //  'hyper-darkmatter',
+        //  'hyperterm-deep-space'
+        //  'nord-hyper',
     ],
 
     // in development, you can create a directory under
