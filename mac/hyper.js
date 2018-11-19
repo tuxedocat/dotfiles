@@ -1,7 +1,7 @@
 module.exports = {
     config: {
         // default font size in pixels for all tabs
-        fontSize: 12,
+        fontSize: 11,
 
         lineHeight: 1.1,
 
@@ -18,10 +18,10 @@ module.exports = {
         cursorBlink: true,
 
         // color of the text
-        foregroundColor: '#fff',
+        foregroundColor: '#1d252c',
 
         // terminal background color
-        backgroundColor: '#000',
+        backgroundColor: '#a2c1da',
 
         // border color (window, tabs)
         borderColor: '#333',
