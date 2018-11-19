@@ -35,6 +35,7 @@ fi
 alias ls='gls --color=auto'
 alias ll='ls -lh'
 alias la='ls -alh'
+alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 
 # Keys, Completions
 bindkey -e
