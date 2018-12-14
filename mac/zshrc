@@ -25,6 +25,11 @@ source ${HOME}/.zsh-autosuggestions/zsh-autosuggestions.zsh
 source ${HOME}/.zplug/init.zsh
 unsetopt correct_all
 
+# Packages
+zplug "b4b4r07/emoji-cli"
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "zsh-users/zsh-completions"
+
 # Theming
 eval $(gdircolors -b ${HOME}/.nord.dircolors)
 if [ -n "$LS_COLORS" ]; then
