@@ -7,8 +7,8 @@ module.exports = {
 
         // font family with optional fallbacks
         fontFamily: '"Source Han Code JP","Source Code Pro"',
-        fontWeight: '100',
-        fontWeightBold: '200',
+        fontWeight: '400',
+        fontWeightBold: '700',
 
         // terminal cursor background color and opacity (hex, rgb, hsl, hsv, hwb or cmyk)
         // cursorColor: 'rgba(248,28,229,0.8)',
