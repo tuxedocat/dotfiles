@@ -3,7 +3,7 @@ module.exports = {
         // default font size in pixels for all tabs
         fontSize: 11,
 
-        lineHeight: 1.1,
+        lineHeight: 1.2,
 
         // font family with optional fallbacks
         fontFamily: '"Source Han Code JP","Source Code Pro"',
@@ -14,8 +14,8 @@ module.exports = {
         // cursorColor: 'rgba(248,28,229,0.8)',
 
         // `BEAM` for |, `UNDERLINE` for _, `BLOCK` for █
-        cursorShape: 'BEAM',
-        cursorBlink: false,
+        cursorShape: 'UNDERLINE',
+        cursorBlink: true,
 
         // color of the text
         foregroundColor: '#1d252c',
