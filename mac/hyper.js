@@ -2,7 +2,6 @@ module.exports = {
     config: {
         // default font size in pixels for all tabs
         fontSize: 11,
-
         lineHeight: 1.1,
 
         // font family with optional fallbacks
@@ -22,6 +21,7 @@ module.exports = {
 
         // terminal background color
         backgroundColor: '#a2c1da',
+        // opacity: 0.75,
 
         // border color (window, tabs)
         borderColor: '#333',
@@ -90,14 +90,17 @@ module.exports = {
     //   `project#1.0.1`
     plugins: [
         'hyper-pane',
-        // 'hyperterm-gotham',
+        'hyper-active-tab',
+        // 'hyper-opacity',
+        //// Themes:
         'hyper-city-lights',
+        // 'hyperterm-gotham',
         // 'hyper-aurora',
-        //  'hyper-loved',
-        //  'hyper-ayu-mirage',
-        //  'hyper-darkmatter',
-        //  'hyperterm-deep-space'
-        //  'nord-hyper',
+        // 'hyper-loved',
+        // 'hyper-ayu-mirage',
+        // 'hyper-darkmatter',
+        // 'hyperterm-deep-space'
+        // 'nord-hyper',
     ],
 
     // in development, you can create a directory under
