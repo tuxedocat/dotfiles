@@ -62,9 +62,12 @@ function use-conda(){
 	. "${HOME}/miniconda3/etc/profile.d/conda.sh"
 }
 
+_google_cloud_sdk_dir="${HOME}/google-cloud-sdk/"
+[ -f "${_google_cloud_sdk_dir}path.zsh.inc" ] && source "${_google_cloud_sdk_dir}path.zsh.inc"
+[ -f "${_google_cloud_sdk_dir}completion.zsh.inc" ] && source "${_google_cloud_sdk_dir}completion.zsh.inc"
+[ -f "${HOME}/.fzf.zsh" ] && source "${HOME}/.fzf.zsh"
+
 function use-pyenv(){
     eval "$(pyenv init -)"
 }
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 eval "$(pyenv init -)"
