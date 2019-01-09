@@ -20,6 +20,10 @@ export PATH="/usr/local/bin:${HOME}/usr/local/bin:/usr/local/sbin:${PATH}"
 export PATH="${PATH}:/usr/local/opt/go/libexec/bin"
 export PATH="${HOME}/.cargo/bin:${PATH}"
 export PGDATA="/usr/local/var/postgres"
+export GOPATH="${HOME}/repos/gopher"
+if [ -n "$GOPATH" ]; then
+    export PATH="${PATH}:$(go env GOPATH)/bin"
+fi
 
 # Minimal settings
 source ${HOME}/.slimzsh/slim.zsh
