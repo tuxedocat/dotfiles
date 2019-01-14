@@ -54,3 +54,5 @@ bindkey "^N" history-beginning-search-forward-end
 function use-conda(){
 	. "${HOME}/miniconda3/etc/profile.d/conda.sh"
 }
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
