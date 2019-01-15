@@ -22,9 +22,7 @@ export PATH="${PATH}:/usr/local/opt/go/libexec/bin"
 export PATH="${HOME}/.cargo/bin:${PATH}"
 export PGDATA="/usr/local/var/postgres"
 export GOPATH="${HOME}/repos/gopher"
-if [ -n "$GOPATH" ]; then
-    export PATH="${PATH}:$(go env GOPATH)/bin"
-fi
+[ -n "$GOPATH" ] && export PATH="${PATH}:$(go env GOPATH)/bin"
 
 # Minimal settings
 source ${HOME}/.slimzsh/slim.zsh
@@ -49,10 +47,8 @@ fi
 zplug load
 
 # Theming
-eval $(gdircolors -b ${HOME}/.nord.dircolors)
-if [ -n "$LS_COLORS" ]; then
-    zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-fi
+[ -f "${HOME}/.nord.dircolors" ] && eval $(gdircolors -b ${HOME}/.nord.dircolors)
+[ -n "$LS_COLORS" ] && zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 # Aliases
 alias ls='gls --color=auto'
@@ -73,20 +69,10 @@ zle -N history-beginning-search-forward-end history-search-end
 bindkey "^P" history-beginning-search-backward-end
 bindkey "^N" history-beginning-search-forward-end
 
-# Miniconda3
-function use-conda(){
-	. "${HOME}/miniconda3/etc/profile.d/conda.sh"
-}
-
 _google_cloud_sdk_dir="${HOME}/google-cloud-sdk/"
 [ -f "${_google_cloud_sdk_dir}path.zsh.inc" ] && source "${_google_cloud_sdk_dir}path.zsh.inc"
 [ -f "${_google_cloud_sdk_dir}completion.zsh.inc" ] && source "${_google_cloud_sdk_dir}completion.zsh.inc"
-[ -f "${HOME}/.fzf.zsh" ] && source "${HOME}/.fzf.zsh"
 
-function use-pyenv(){
-    eval "$(pyenv init -)"
-}
-eval "$(pyenv init -)"
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
+[ -d "${HOME}/.pyenv" ] && eval "$(pyenv init -)"
+[ -f "${HOME}/.fzf.zsh" ] && . ~/.fzf.zsh
+[ -d "${HOME}/.poetry" ] && export PATH="${PATH}:${HOME}/.poetry/bin"
