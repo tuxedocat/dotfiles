@@ -2,3 +2,11 @@
 # Executes commands at login pre-zshrc.
 #
 export PATH="${HOME}/.cargo/bin:${PATH}"
+if [ -d "${HOME}/.poetry" ]; then
+    if ! [ -f "${HOME}/.zfunc/_poetry" ]; then
+        mkdir -p ${HOME}/.zfunc
+        poetry completions zsh > ${HOME}/.zfunc/_poetry
+    fi
+fi
+[ -d "${HOME}/.pyenv" ] && eval "$(pyenv init -)"
+

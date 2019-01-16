@@ -8,21 +8,6 @@ setopt hist_ignore_all_dups
 setopt hist_ignore_space
 setopt share_history
 setopt no_auto_remove_slash
-autoload -U compinit && compinit
-
-# Envvars
-export SHELL=/usr/local/bin/zsh
-export EDITOR='vim'
-export VISUAL='code'
-export PAGER='less'
-export LANG=en_US.UTF-8
-export LC_CTYPE=en_US.UTF-8
-export PATH="/usr/local/bin:${HOME}/usr/local/bin:/usr/local/sbin:${PATH}"
-export PATH="${PATH}:/usr/local/opt/go/libexec/bin"
-export PATH="${HOME}/.cargo/bin:${PATH}"
-export PGDATA="/usr/local/var/postgres"
-export GOPATH="${HOME}/repos/gopher"
-[ -n "$GOPATH" ] && export PATH="${PATH}:$(go env GOPATH)/bin"
 
 # Minimal settings
 source ${HOME}/.slimzsh/slim.zsh
@@ -45,6 +30,7 @@ fi
 
 # Then, source plugins and add commands to $PATH
 zplug load
+autoload -U compinit && compinit
 
 # Theming
 [ -f "${HOME}/.nord.dircolors" ] && eval $(gdircolors -b ${HOME}/.nord.dircolors)
@@ -69,10 +55,12 @@ zle -N history-beginning-search-forward-end history-search-end
 bindkey "^P" history-beginning-search-backward-end
 bindkey "^N" history-beginning-search-forward-end
 
-_google_cloud_sdk_dir="${HOME}/google-cloud-sdk/"
-[ -f "${_google_cloud_sdk_dir}path.zsh.inc" ] && source "${_google_cloud_sdk_dir}path.zsh.inc"
-[ -f "${_google_cloud_sdk_dir}completion.zsh.inc" ] && source "${_google_cloud_sdk_dir}completion.zsh.inc"
+use-google-cloud-sdk() {
+    _google_cloud_sdk_dir="${HOME}/google-cloud-sdk/"
+    [ -f "${_google_cloud_sdk_dir}path.zsh.inc" ] && source "${_google_cloud_sdk_dir}path.zsh.inc"
+    [ -f "${_google_cloud_sdk_dir}completion.zsh.inc" ] && source "${_google_cloud_sdk_dir}completion.zsh.inc"
+    pyenv shell 3.7.2 2.7.15
+}
 
-[ -d "${HOME}/.pyenv" ] && eval "$(pyenv init -)"
 [ -f "${HOME}/.fzf.zsh" ] && . ~/.fzf.zsh
-[ -d "${HOME}/.poetry" ] && export PATH="${PATH}:${HOME}/.poetry/bin"
+
