@@ -1,4 +1,5 @@
 # Sane default
+source ${HOME}/.slimzsh/slim.zsh
 setopt no_beep
 setopt auto_cd
 export HISTSIZE=1000000
@@ -8,12 +9,11 @@ setopt hist_ignore_all_dups
 setopt hist_ignore_space
 setopt share_history
 setopt no_auto_remove_slash
+unsetopt correct_all
 
 # Minimal settings
-source ${HOME}/.slimzsh/slim.zsh
 source ${HOME}/.zsh-autosuggestions/zsh-autosuggestions.zsh
 source ${HOME}/.zplug/init.zsh
-unsetopt correct_all
 
 # Packages
 zplug "b4b4r07/emoji-cli"
