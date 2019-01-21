@@ -9,6 +9,7 @@ export VISUAL='code'
 export PAGER='less'
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
+export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
 export PATH="/usr/local/bin:${HOME}/usr/local/bin:/usr/local/sbin:${PATH}"
 export PATH="${PATH}:/usr/local/opt/go/libexec/bin"
 export PATH="${HOME}/.cargo/bin:${PATH}"
