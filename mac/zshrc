@@ -64,5 +64,5 @@ use-google-cloud-sdk() {
     pyenv shell 3.7.2 2.7.15
 }
 
-[ -f "${HOME}/.fzf.zsh" ] && . ~/.fzf.zsh
+[ -f "${HOME}/.fzf.zsh" ] && . ${HOME}/.fzf.zsh
 
