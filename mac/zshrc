@@ -1,15 +1,26 @@
 # Sane default
+unsetopt correct_all
 setopt no_beep
 setopt auto_cd
+export HISTCONTROL=ignoredups
 export HISTSIZE=1000000
 export SAVEHIST=1000000
 setopt append_history
-setopt hist_ignore_all_dups
+setopt extended_history
+setopt hist_ignore_dups # ignore duplication command history list
 setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_verify
 setopt share_history
+setopt inc_append_history
+setopt hist_expire_dups_first
 setopt no_auto_remove_slash
 setopt interactivecomments
-unsetopt correct_all
+unsetopt menu_complete   # do not autoselect the first completion entry
+unsetopt flowcontrol
+setopt auto_menu         # show completion menu on succesive tab press
+setopt complete_in_word
+setopt always_to_end
 
 # Minimal settings
 source ${HOME}/.zsh-autosuggestions/zsh-autosuggestions.zsh
