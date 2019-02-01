@@ -2,3 +2,4 @@ inoremap <C-a> <Home>
 inoremap <C-e> <End>
 inoremap <C-f> <Right>
 inoremap <C-b> <Left>
+set surround
