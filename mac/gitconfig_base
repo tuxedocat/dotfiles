@@ -1,0 +1,15 @@
+[credential]
+	helper = osxkeychain
+[core]
+	editor = vim
+	excludesfile = ${HOME}/.gitignore_global
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[user]
+	name = tuxedocat
+	email = tuxedocat@users.noreply.github.com
+[hub]
+	protocol = https
