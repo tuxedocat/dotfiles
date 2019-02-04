@@ -77,4 +77,5 @@ use-google-cloud-sdk() {
 }
 
 [ -f "${HOME}/.fzf.zsh" ] && . ${HOME}/.fzf.zsh
+use-google-cloud-sdk
 
