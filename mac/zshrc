@@ -77,5 +77,6 @@ use-google-cloud-sdk() {
 }
 
 [ -f "${HOME}/.fzf.zsh" ] && . ${HOME}/.fzf.zsh
+eval "$(direnv hook zsh)"
 use-google-cloud-sdk
 
