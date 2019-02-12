@@ -23,6 +23,7 @@ setopt complete_in_word
 setopt always_to_end
 stty stop undef
 stty start undef
+export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
 # Minimal settings
 source ${HOME}/.zsh-autosuggestions/zsh-autosuggestions.zsh
