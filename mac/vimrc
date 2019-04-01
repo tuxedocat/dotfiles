@@ -28,10 +28,14 @@ Plug 'whatyouhide/vim-gotham'
 "" Language specific plugins
 " Plug 'derekwyatt/vim-scala'
 " Plug 'ensime/ensime-vim'
+Plug 'davidhalter/jedi-vim'
+Plug 'jmcantrell/vim-virtualenv'
 Plug 'racer-rust/vim-racer'
 Plug 'rust-lang/rust.vim'
 Plug 'fatih/vim-go', { 'tag': 'v1.19' }
 Plug 'ymyzk/vim-copl'
+Plug 'google/vim-maktaba'
+Plug 'bazelbuild/vim-bazel'
 
 "" Any valid git URL is allowed
 " Plug 'https://github.com/junegunn/vim-github-dashboard.git'
@@ -238,3 +242,10 @@ au FileType rust nmap gd <Plug>(rust-def)
 au FileType rust nmap gs <Plug>(rust-def-split)
 au FileType rust nmap gx <Plug>(rust-def-vertical)
 au FileType rust nmap <leader>gd <Plug>(rust-doc)
+
+
+""*****************************************************************************
+"" Python
+""*****************************************************************************
+let g:pymode_rope = 0
+let g:virtualenv_auto_activate = 1
