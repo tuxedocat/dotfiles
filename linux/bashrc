@@ -85,12 +85,12 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
-#alias ll='ls -l'
-#alias la='ls -A'
-#alias l='ls -CF'
+alias ll='ls -l'
+alias la='ls -A'
+alias l='ls -CF'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -111,12 +111,19 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-[ -r ~/.byobu/prompt ] && . ~/.byobu/prompt   #byobu-prompt#
+
+# [ -r ~/.byobu/prompt ] && . ~/.byobu/prompt   #byobu-prompt#
+parse_git_branch() {
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+export PS1="\u@\h \[\033[32m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f ~/.git-completion.bash ] && source ~/.git-completion.bash
+[ -f ~/.cargo/bin/cargo ] && export PATH="${HOME}/cargo/bin:${PATH}"
+
 export PATH="${HOME}/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 export EDITOR=vim
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-[ -f ~/.git-completion.bash ] && source ~/.git-completion.bash
 stty -ixon
