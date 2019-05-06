@@ -2,8 +2,7 @@
 # Defines environment variables.
 #
 
-export EDITOR=nvim
-alias vim=nvim
+export EDITOR='vim'
 export PATH="/usr/local/bin:${HOME}/usr/local/bin:/usr/local/sbin:${PATH}"
 export PATH="${PATH}:/usr/local/opt/go/libexec/bin"
 export PATH="${HOME}/.cargo/bin:${PATH}"

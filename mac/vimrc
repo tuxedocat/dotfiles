@@ -22,8 +22,6 @@ Plug 'ap/vim-buftabline'
 
 "" Aesthetics
 Plug 'arcticicestudio/nord-vim'
-Plug 'whatyouhide/vim-gotham'
-" Plug '~/vim-citylights' " Prototype
 
 "" Language specific plugins
 " Plug 'derekwyatt/vim-scala'
