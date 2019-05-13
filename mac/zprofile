@@ -13,3 +13,5 @@ export PGDATA="/usr/local/var/postgres"
 export GOPATH="${HOME}/repos/gopher"
 [ -n "$GOPATH" ] && export PATH="${PATH}:$(go env GOPATH)/bin"
 
+
+export PATH="$HOME/.poetry/bin:$PATH"

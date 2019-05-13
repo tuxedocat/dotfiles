@@ -28,6 +28,7 @@ export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 # Minimal settings
 source ${HOME}/.zsh-autosuggestions/zsh-autosuggestions.zsh
 source ${HOME}/.zplug/init.zsh
+fpath+=~/.zfunc
 
 # Packages
 zplug "b4b4r07/emoji-cli"
