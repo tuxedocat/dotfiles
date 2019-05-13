@@ -1,7 +1,9 @@
 #
 # Executes commands at login pre-zshrc.
 #
+#
 ## Envvars
+fpath+=~/.zfunc
 export SHELL=/usr/local/bin/zsh
 export EDITOR='vim'
 export VISUAL='code'
@@ -13,8 +15,6 @@ export PGDATA="/usr/local/var/postgres"
 export GOPATH="${HOME}/repos/gopher"
 [ -n "$GOPATH" ] && export PATH="${PATH}:$(go env GOPATH)/bin"
 
-export PATH="$HOME/.poetry/bin:$PATH"
-
 use-google-cloud-sdk() {
     _google_cloud_sdk_dir="${HOME}/google-cloud-sdk/"
     [ -f "${_google_cloud_sdk_dir}path.zsh.inc" ] && source "${_google_cloud_sdk_dir}path.zsh.inc"
@@ -22,6 +22,5 @@ use-google-cloud-sdk() {
     pyenv shell 3.7.2 2.7.15
 }
 
-[ -f "${HOME}/.fzf.zsh" ] && . ${HOME}/.fzf.zsh
 use-google-cloud-sdk
 

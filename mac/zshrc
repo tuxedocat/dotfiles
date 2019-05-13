@@ -26,7 +26,6 @@ stty start undef
 export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
 # Minimal settings
-fpath+=~/.zfunc
 source ${HOME}/.zsh-autosuggestions/zsh-autosuggestions.zsh
 source ${HOME}/.zplug/init.zsh
 
@@ -72,4 +71,10 @@ zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 bindkey "^P" history-beginning-search-backward-end
 bindkey "^N" history-beginning-search-forward-end
+
+export PATH="$HOME/.poetry/bin:$PATH"
+# Fix for https://github.com/sdispater/poetry/issues/571 (poetry <= 0.12.*)
+alias poetry_shell=$'source "$(poetry debug:info | grep \'* Path:\' | grep -o \'\/.*\')/bin/activate"'
+
+[ -f "${HOME}/.fzf.zsh" ] && . ${HOME}/.fzf.zsh
 
