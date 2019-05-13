@@ -26,9 +26,9 @@ stty start undef
 export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
 # Minimal settings
+fpath+=~/.zfunc
 source ${HOME}/.zsh-autosuggestions/zsh-autosuggestions.zsh
 source ${HOME}/.zplug/init.zsh
-fpath+=~/.zfunc
 
 # Packages
 zplug "b4b4r07/emoji-cli"
@@ -72,15 +72,4 @@ zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 bindkey "^P" history-beginning-search-backward-end
 bindkey "^N" history-beginning-search-forward-end
-
-use-google-cloud-sdk() {
-    _google_cloud_sdk_dir="${HOME}/google-cloud-sdk/"
-    [ -f "${_google_cloud_sdk_dir}path.zsh.inc" ] && source "${_google_cloud_sdk_dir}path.zsh.inc"
-    [ -f "${_google_cloud_sdk_dir}completion.zsh.inc" ] && source "${_google_cloud_sdk_dir}completion.zsh.inc"
-    pyenv shell 3.7.2 2.7.15
-}
-
-[ -f "${HOME}/.fzf.zsh" ] && . ${HOME}/.fzf.zsh
-eval "$(direnv hook zsh)"
-use-google-cloud-sdk
 

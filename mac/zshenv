@@ -2,10 +2,16 @@
 # Defines environment variables.
 #
 
+# Disables loading of /etc/profile
+# to avoid overriding PATH by path_helper which take cares of /etc/paths
+setopt no_global_rcs
+
 export EDITOR='vim'
-export PATH="/usr/local/bin:${HOME}/usr/local/bin:/usr/local/sbin:${PATH}"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:${PATH}"
 export PATH="${PATH}:/usr/local/opt/go/libexec/bin"
 export PATH="${HOME}/.cargo/bin:${PATH}"
 export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
 
+export PYENV_ROOT="${HOME}/.pyenv"
+export PATH="${PYENV_ROOT}/bin:${PATH}"
 [ -d "${HOME}/.pyenv" ] && eval "$(pyenv init -)"
