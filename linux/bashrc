@@ -19,6 +19,8 @@ shopt -s histappend
 HISTSIZE=100000
 HISTFILESIZE=2000000
 
+export EDITOR=vim
+
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
@@ -122,8 +124,12 @@ export PS1="\[\033[32m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] \$ "
 [ -f ~/.git-completion.bash ] && source ~/.git-completion.bash
 [ -f ~/.cargo/bin/cargo ] && export PATH="${HOME}/cargo/bin:${PATH}"
 
+export GOPATH="${HOME}/repos/gopher"
+[ -n "$GOPATH" ] && export PATH="${PATH}:$(go env GOPATH)/bin"
+
 export PATH="${HOME}/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
-export EDITOR=vim
+alias poetry_shell=$'source "$(dirname $(poetry run which python))/activate"'
+
 stty -ixon
