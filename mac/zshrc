@@ -26,13 +26,11 @@ stty start undef
 export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
 # Minimal settings
-source ${HOME}/.zsh-autosuggestions/zsh-autosuggestions.zsh
 source ${HOME}/.zplug/init.zsh
 
 # Packages
 zplug "b4b4r07/emoji-cli"
 zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-autosuggestions"
 zplug "mafredri/zsh-async", from:github
 zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
@@ -44,6 +42,8 @@ if ! zplug check --verbose; then
         echo; zplug install
     fi
 fi
+
+fpath+=~/.zfunc
 
 # Then, source plugins and add commands to $PATH
 zplug load
