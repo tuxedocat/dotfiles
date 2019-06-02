@@ -26,7 +26,8 @@ stty start undef
 export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
 # Minimal settings
-source ${HOME}/.zplug/init.zsh
+export ZPLUG_HOME=/usr/local/opt/zplug
+source $ZPLUG_HOME/init.zsh
 
 # Packages
 zplug "b4b4r07/emoji-cli"
@@ -34,6 +35,7 @@ zplug "zsh-users/zsh-completions"
 zplug "mafredri/zsh-async", from:github
 zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "zsh-users/zsh-autosuggestions"
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
