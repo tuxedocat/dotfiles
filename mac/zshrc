@@ -74,19 +74,29 @@ zle -N history-beginning-search-forward-end history-search-end
 bindkey "^P" history-beginning-search-backward-end
 bindkey "^N" history-beginning-search-forward-end
 
-use-google-cloud-sdk() {
+use-google-cloud-sdk () {
     _google_cloud_sdk_dir="${HOME}/google-cloud-sdk/"
     [ -f "${_google_cloud_sdk_dir}path.zsh.inc" ] && source "${_google_cloud_sdk_dir}path.zsh.inc"
     [ -f "${_google_cloud_sdk_dir}completion.zsh.inc" ] && source "${_google_cloud_sdk_dir}completion.zsh.inc"
     pyenv global 3.7.2 2.7.15 system
 }
 
+activate () {
+    [[ -f "./.venv/bin/activate" ]] && source ./.venv/bin/activate \
+        || [[ -f "./venv/bin/activate" ]] && source ./venv/bin/activate \
+        || echo "No virtualenv found in $(pwd)"
+}
+
+# Fix for https://github.com/sdispater/poetry/issues/571 (poetry <= 0.12.*)
+poetry_shell () {
+    SRC=$(echo $(dirname $(poetry run which python >& /dev/null ) >& /dev/null )/activate )
+    [[ -f ${SRC} ]] && source ${SRC} || echo "No poetry env found in $(pwd)"
+}
+
 use-google-cloud-sdk
 
 eval "$(pyenv init -)"
 export PATH="${HOME}/.poetry/bin:${PATH}"
-# Fix for https://github.com/sdispater/poetry/issues/571 (poetry <= 0.12.*)
-alias poetry_shell=$'source "$(dirname $(poetry run which python))/activate"'
 
 [ -f "${HOME}/.fzf.zsh" ] && . ${HOME}/.fzf.zsh
 
