@@ -19,10 +19,10 @@ module.exports = {
         cursorBlink: true,
 
         // color of the text
-        foregroundColor: '#1d252c',
+        foregroundColor: '#d8dee9',
 
         // terminal background color
-        backgroundColor: '#a2c1da',
+        backgroundColor: '#3b4252',
         // opacity: 0.75,
 
         // border color (window, tabs)
@@ -76,12 +76,21 @@ module.exports = {
         bell: 'SOUND',
 
         // if true, selected text will automatically be copied to the clipboard
-        copyOnSelect: true
+        copyOnSelect: true,
 
         // URL to custom bell
         // bellSoundURL: 'http://example.com/bell.mp3',
 
         // for advanced config flags please refer to https://hyper.is/#cfg
+
+        // Plugin specific configs
+        hyperStatusLine: {
+            footerTransparent: false,
+        },
+        hyperGcpStatueLine: {
+            gcloudBinary: '$HOME/google-cloud-sdk/bin/gcloud',
+            kubectlBinary: '/usr/local/bin/kubectl'
+        },
     },
 
     // a list of plugins to fetch and install from npm
@@ -93,8 +102,10 @@ module.exports = {
     plugins: [
         'hyper-pane',
         'hyper-active-tab',
-        // 'hyper-opacity',
+        'hyper-statusline',
+        // 'hyper-gcp-status-line',
         //// Themes:
+        // 'hyper-opacity',
         // 'hyper-city-lights',
         // 'hyperterm-gotham',
         // 'hyper-aurora',
