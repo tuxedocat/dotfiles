@@ -1,8 +1,9 @@
 module.exports = {
     config: {
+        scrollback: 10000,
+
         // default font size in pixels for all tabs
         fontSize: 11,
-
         lineHeight: 1.2,
 
         // font family with optional fallbacks
@@ -14,8 +15,8 @@ module.exports = {
         // cursorColor: 'rgba(248,28,229,0.8)',
 
         // `BEAM` for |, `UNDERLINE` for _, `BLOCK` for █
-        cursorShape: 'UNDERLINE',
-        cursorBlink: false,
+        cursorShape: 'BEAM',
+        cursorBlink: true,
 
         // color of the text
         foregroundColor: '#1d252c',
@@ -94,14 +95,14 @@ module.exports = {
         'hyper-active-tab',
         // 'hyper-opacity',
         //// Themes:
-        'hyper-city-lights',
+        // 'hyper-city-lights',
         // 'hyperterm-gotham',
         // 'hyper-aurora',
         // 'hyper-loved',
         // 'hyper-ayu-mirage',
         // 'hyper-darkmatter',
         // 'hyperterm-deep-space'
-        // 'nord-hyper',
+        'nord-hyper',
     ],
 
     // in development, you can create a directory under
