@@ -37,28 +37,6 @@ module.exports = {
         // custom padding (css format, i.e.: `top right bottom left`)
         padding: '16px 16px 16px 16px',
 
-        // the full list. if you're going to provide the full color palette,
-        // including the 6 x 6 color cubes and the grayscale map, just provide
-        // an array here instead of a color map object
-        // colors: {
-        //     black: '#000000',
-        //     red: '#ff0000',
-        //     green: '#33ff00',
-        //     yellow: '#ffff00',
-        //     blue: '#0066ff',
-        //     magenta: '#cc00ff',
-        //     cyan: '#00ffff',
-        //     white: '#d0d0d0',
-        //     lightBlack: '#808080',
-        //     lightRed: '#ff0000',
-        //     lightGreen: '#33ff00',
-        //     lightYellow: '#ffff00',
-        //     lightBlue: '#0066ff',
-        //     lightMagenta: '#cc00ff',
-        //     lightCyan: '#00ffff',
-        //     lightWhite: '#ffffff'
-        // },
-
         // the shell to run when spawning a new session (i.e. /usr/local/bin/fish)
         // if left empty, your system's login shell will be used by default
         shell: '/usr/local/bin/zsh',
@@ -91,6 +69,18 @@ module.exports = {
             gcloudBinary: '$HOME/google-cloud-sdk/bin/gcloud',
             kubectlBinary: '/usr/local/bin/kubectl'
         },
+        hyperline: {
+            plugins: [
+                "hostname",
+                "cpu",
+                "memory",
+                "network",
+                // "docker",
+                "ip",
+                "time",
+                "git-status",
+            ]
+        },
     },
 
     // a list of plugins to fetch and install from npm
@@ -102,14 +92,14 @@ module.exports = {
     plugins: [
         'hyper-pane',
         'hyper-active-tab',
-        'hyper-statusline',
+        // 'hyperline',
+        // 'hyper-statusline',
         // 'hyper-gcp-status-line',
-        //// Themes:
         // 'hyper-opacity',
+
+        //// Theme, choose one
         // 'hyper-city-lights',
-        // 'hyperterm-gotham',
         // 'hyper-aurora',
-        // 'hyper-loved',
         // 'hyper-ayu-mirage',
         // 'hyper-darkmatter',
         // 'hyperterm-deep-space'
