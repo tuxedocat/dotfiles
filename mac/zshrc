@@ -99,4 +99,5 @@ eval "$(pyenv init -)"
 export PATH="${HOME}/.poetry/bin:${PATH}"
 
 [ -f "${HOME}/.fzf.zsh" ] && . ${HOME}/.fzf.zsh
+export FZF_DEFAULT_OPTS="--color 16"
 
