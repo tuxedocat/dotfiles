@@ -82,9 +82,9 @@ use-google-cloud-sdk () {
 }
 
 activate () {
-    [[ -f "./.venv/bin/activate" ]] && source ./.venv/bin/activate \
-        || [[ -f "./venv/bin/activate" ]] && source ./venv/bin/activate \
-        || echo "No virtualenv found in $(pwd)"
+    [[ -f "./.venv/bin/activate" ]] && { source ./.venv/bin/activate ; return 0 } \
+        || [[ -f "./venv/bin/activate" ]] && { source ./venv/bin/activate ; return 0 } \
+        || { echo "No virtualenv found in $(pwd)" ; return 1 }
 }
 
 # Fix for https://github.com/sdispater/poetry/issues/571 (poetry <= 0.12.*)
