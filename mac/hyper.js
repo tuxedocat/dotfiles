@@ -1,21 +1,23 @@
 module.exports = {
     config: {
+        updateChannel: 'stable',
         scrollback: 10000,
 
         // default font size in pixels for all tabs
         fontSize: 11,
-        lineHeight: 1.2,
+        // lineHeight: 1.2,
 
         // font family with optional fallbacks
         fontFamily: '"Source Code Pro","Source Han Code JP"',
-        fontWeight: '400',
-        fontWeightBold: '700',
+        fontWeight: 'normal',
+        fontWeightBold: 'bold',
 
         // terminal cursor background color and opacity (hex, rgb, hsl, hsv, hwb or cmyk)
-        // cursorColor: 'rgba(248,28,229,0.8)',
+        cursorColor: '#88c0d0',
+        cursorAccentColor: '#d8dee9',
 
         // `BEAM` for |, `UNDERLINE` for _, `BLOCK` for █
-        cursorShape: 'BEAM',
+        cursorShape: 'UNDERLINE',
         cursorBlink: true,
 
         // color of the text
@@ -23,10 +25,9 @@ module.exports = {
 
         // terminal background color
         backgroundColor: '#3b4252',
-        // opacity: 0.75,
 
         // border color (window, tabs)
-        borderColor: '#3b4252',
+        borderColor: '#8fbcbb',
 
         // custom css to embed in the main window
         css: '',
@@ -92,10 +93,10 @@ module.exports = {
     plugins: [
         'hyper-pane',
         'hyper-active-tab',
+        // 'hyper-opacity',
         // 'hyperline',
         // 'hyper-statusline',
         // 'hyper-gcp-status-line',
-        // 'hyper-opacity',
 
         //// Theme, choose one
         // 'hyper-city-lights',
