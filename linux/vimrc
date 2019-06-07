@@ -22,12 +22,12 @@ Plug 'ap/vim-buftabline'
 
 "" Aesthetics
 Plug 'arcticicestudio/nord-vim'
-Plug 'whatyouhide/vim-gotham'
 " Plug '~/vim-citylights' " Prototype
 
 "" Language specific plugins
 " Plug 'derekwyatt/vim-scala'
 " Plug 'ensime/ensime-vim'
+" Plug 'python/black' 
 Plug 'racer-rust/vim-racer'
 Plug 'rust-lang/rust.vim'
 Plug 'fatih/vim-go', { 'tag': 'v1.19' }
