@@ -129,7 +129,15 @@ export GOPATH="${HOME}/repos/gopher"
 
 export PATH="${HOME}/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-alias poetry_shell=$'source "$(dirname $(poetry run which python))/activate"'
+# eval "$(pyenv virtualenv-init -)"
 
-stty -ixon
+activate () {
+    [[ -f "./.venv/bin/activate" ]] && { source ./.venv/bin/activate ; return 0 ; } \
+        || [[ -f "./venv/bin/activate" ]] && { source ./venv/bin/activate ; return 0 ; } \
+        || { echo "No virtualenv found in $(pwd)" ; return 1 ; }
+}
+
+poetry_shell () {
+    SRC=$(echo $(dirname $(poetry run which python 2> /dev/null ) 2> /dev/null )/activate )
+    [[ -f ${SRC} ]] && source ${SRC} || echo "No poetry env found in $(pwd)"
+}
