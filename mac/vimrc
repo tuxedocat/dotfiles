@@ -119,6 +119,10 @@ if has('mouse')
   endif
 endif
 
+"" Invisible chars
+set list
+set listchars=eol:¬,tab:▸\
+
 "" session management
 " let g:session_directory = "~/.vim/session"
 let g:session_autoload = "no"
