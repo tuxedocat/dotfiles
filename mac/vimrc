@@ -121,7 +121,7 @@ endif
 
 "" Invisible chars
 set list
-set listchars=eol:¬,tab:▸\
+set listchars=eol:¬,tab:▸-
 
 "" session management
 " let g:session_directory = "~/.vim/session"
