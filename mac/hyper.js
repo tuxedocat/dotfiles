@@ -8,7 +8,7 @@ module.exports = {
         // lineHeight: 1.2,
 
         // font family with optional fallbacks
-        fontFamily: '"Source Code Pro","Source Han Code JP"',
+        fontFamily: '"SF Mono","Source Code Pro","Source Han Code JP"',
         fontWeight: 'normal',
         fontWeightBold: 'bold',
 
@@ -52,7 +52,7 @@ module.exports = {
         },
 
         // set to false for no bell
-        bell: 'SOUND',
+        bell: false,
 
         // if true, selected text will automatically be copied to the clipboard
         copyOnSelect: true,
