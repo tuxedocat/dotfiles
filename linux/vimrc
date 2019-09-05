@@ -27,7 +27,9 @@ Plug 'arcticicestudio/nord-vim'
 "" Language specific plugins
 " Plug 'derekwyatt/vim-scala'
 " Plug 'ensime/ensime-vim'
-" Plug 'python/black' 
+Plug 'psf/black' 
+Plug 'davidhalter/jedi-vim'
+"Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'racer-rust/vim-racer'
 Plug 'rust-lang/rust.vim'
 Plug 'fatih/vim-go', { 'tag': 'v1.19' }
@@ -230,6 +232,13 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
+
+let g:syntastic_python_checkers=['flake8']
+let g:syntastic_python_flake8_args = '--ignore=E501,F401,F402,F403,F405,E401,E402'
+
+let g:jedi#use_splits_not_buffers = "left"
+let g:jedi#popup_on_dot = 0
+let g:jedi#popup_select_first = 0
 
 
 ""*****************************************************************************
