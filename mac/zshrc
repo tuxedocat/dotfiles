@@ -96,6 +96,10 @@ poetry_shell () {
 
 use-google-cloud-sdk
 
+count-loc () {
+    find . -name "*.${1}" | xargs -L1 wc -l | tr -s " " | cut -d " " -f 2 | paste -sd+ - | bc
+}
+
 eval "$(pyenv init -)"
 export PATH="${HOME}/.poetry/bin:${PATH}"
 
