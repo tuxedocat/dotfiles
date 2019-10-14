@@ -60,6 +60,8 @@ alias ls='gls -h --color=auto'
 alias ll='ls -lh'
 alias la='ls -alh'
 alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
+alias vim='nvim'
+export EDITOR="/usr/local/bin/nvim"
 
 # Keys, Completions
 bindkey -e
