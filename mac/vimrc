@@ -19,6 +19,8 @@ Plug 'junegunn/vim-easy-align'
 Plug 'vim-syntastic/syntastic'
 Plug 'ervandew/supertab'
 Plug 'ap/vim-buftabline'
+Plug 'toml-lang/toml'
+Plug 'cespare/vim-toml'
 
 "" Aesthetics
 Plug 'arcticicestudio/nord-vim'
