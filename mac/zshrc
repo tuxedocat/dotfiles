@@ -87,7 +87,7 @@ activate () {
     [[ -f "./.venv/bin/activate" ]] && { source ./.venv/bin/activate ; return 0 } \
         || [[ -f "./venv/bin/activate" ]] && { source ./venv/bin/activate ; return 0 } \
         || SRC=$(echo $(dirname $(poetry run which python 2>/dev/null ) 2>/dev/null )/activate ); \
-           [[ -f ${SRC} ]] && { source ${SRC} ; return 0 } \
+           [[ -f ${SRC} ]] && { poetry shell ; return 0 } \
         || { echo "No virtualenv found in $(pwd)" ; return 1 }
 }
 
