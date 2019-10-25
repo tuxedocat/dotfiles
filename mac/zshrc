@@ -77,10 +77,10 @@ bindkey "^P" history-beginning-search-backward-end
 bindkey "^N" history-beginning-search-forward-end
 
 use-google-cloud-sdk () {
+    export CLOUDSDK_PYTHON=python3
     _google_cloud_sdk_dir="${HOME}/google-cloud-sdk/"
     [ -f "${_google_cloud_sdk_dir}path.zsh.inc" ] && source "${_google_cloud_sdk_dir}path.zsh.inc"
     [ -f "${_google_cloud_sdk_dir}completion.zsh.inc" ] && source "${_google_cloud_sdk_dir}completion.zsh.inc"
-    pyenv global 3.7.4 2.7.15 system
 }
 
 activate () {
@@ -97,7 +97,6 @@ poetry_shell () {
     [[ -f ${SRC} ]] && source ${SRC} || echo "Failed to source ${SRC}"
 }
 
-use-google-cloud-sdk
 
 count-loc () {
     find . -name "*.${1}" | xargs -L1 wc -l | tr -s " " | cut -d " " -f 2 | paste -sd+ - | bc
@@ -105,7 +104,9 @@ count-loc () {
 
 eval "$(pyenv init -)"
 export PATH="${HOME}/.poetry/bin:${PATH}"
+use-google-cloud-sdk
 
 [ -f "${HOME}/.fzf.zsh" ] && . ${HOME}/.fzf.zsh
 export FZF_DEFAULT_OPTS="--color 16"
+
 
