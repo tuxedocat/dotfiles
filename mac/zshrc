@@ -109,4 +109,4 @@ use-google-cloud-sdk
 [ -f "${HOME}/.fzf.zsh" ] && . ${HOME}/.fzf.zsh
 export FZF_DEFAULT_OPTS="--color 16"
 
-
+eval "$(direnv hook zsh)"
