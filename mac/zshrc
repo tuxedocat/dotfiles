@@ -76,6 +76,11 @@ zle -N history-beginning-search-forward-end history-search-end
 bindkey "^P" history-beginning-search-backward-end
 bindkey "^N" history-beginning-search-forward-end
 
+less_with_unbuffer () {
+    unbuffer "$@" |& less -SR
+}
+alias ul=less_with_unbuffer
+
 use-google-cloud-sdk () {
     export CLOUDSDK_PYTHON=python3
     _google_cloud_sdk_dir="${HOME}/google-cloud-sdk/"
