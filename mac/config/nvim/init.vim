@@ -30,6 +30,7 @@ Plug 'fatih/vim-go', { 'tag': 'v1.19' }
 Plug 'ymyzk/vim-copl'
 Plug 'google/vim-maktaba'
 Plug 'bazelbuild/vim-bazel'
+Plug 'kristijanhusak/vim-carbon-now-sh'
 
 "" Any valid git URL is allowed
 " Plug 'https://github.com/junegunn/vim-github-dashboard.git'
