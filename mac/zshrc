@@ -32,10 +32,9 @@ source $ZPLUG_HOME/init.zsh
 # Packages
 zplug "b4b4r07/emoji-cli"
 zplug "zsh-users/zsh-completions"
-zplug "mafredri/zsh-async", from:github
-zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "jackharrisonsherlock/common", from:github, as:theme
 zplug "zsh-users/zsh-autosuggestions"
+zplug "zdharma/fast-syntax-highlighting"
 zplug "lukechilds/zsh-nvm"
 zplug "StackExchange/blackbox"
 zplug "supercrabtree/k"
@@ -119,3 +118,6 @@ export FZF_DEFAULT_OPTS="--color 16"
 
 eval "$(direnv hook zsh)"
 # eval "$(anyenv init -)"
+
+
+source "/Users/s05208/.local/share/dephell/_dephell_zsh_autocomplete"
