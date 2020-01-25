@@ -119,5 +119,4 @@ export FZF_DEFAULT_OPTS="--color 16"
 eval "$(direnv hook zsh)"
 # eval "$(anyenv init -)"
 
-
-source "/Users/s05208/.local/share/dephell/_dephell_zsh_autocomplete"
+source "${HOME}/.local/share/dephell/_dephell_zsh_autocomplete"
