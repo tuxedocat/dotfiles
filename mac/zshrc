@@ -51,7 +51,11 @@ fpath+=~/.zfunc
 
 # Then, source plugins and add commands to $PATH
 zplug load
-autoload -U compinit && compinit
+autoload -Uz compinit
+for dump in ~/.zcompdump(N.mh+24); do
+  compinit
+done
+compinit -C
 
 # Theming
 [ -f "${HOME}/.nord.dircolors" ] && eval $(gdircolors -b ${HOME}/.nord.dircolors)
