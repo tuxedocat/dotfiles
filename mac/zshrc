@@ -1,3 +1,7 @@
+# Uncomment below to enable profiling
+# zmodload zsh/zprof
+
+
 # Sane default
 unsetopt correct_all
 setopt no_beep
@@ -29,6 +33,9 @@ export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
 
+# Package settings
+export NVM_LAZY_LOAD=true
+
 # Packages
 zplug "b4b4r07/emoji-cli"
 zplug "zsh-users/zsh-completions"
@@ -51,11 +58,14 @@ fpath+=~/.zfunc
 
 # Then, source plugins and add commands to $PATH
 zplug load
+
+# Completions
 autoload -Uz compinit
 for dump in ~/.zcompdump(N.mh+24); do
   compinit
 done
 compinit -C
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' '+m:{[:upper:]}={[:lower:]}'
 
 # Theming
 [ -f "${HOME}/.nord.dircolors" ] && eval $(gdircolors -b ${HOME}/.nord.dircolors)
@@ -82,6 +92,8 @@ zle -N history-beginning-search-forward-end history-search-end
 bindkey "^P" history-beginning-search-backward-end
 bindkey "^N" history-beginning-search-forward-end
 
+
+# Functions, and utils on start-up
 less_with_unbuffer () {
     unbuffer "$@" |& less -SR
 }
@@ -124,3 +136,26 @@ eval "$(direnv hook zsh)"
 # eval "$(anyenv init -)"
 
 source "${HOME}/.local/share/dephell/_dephell_zsh_autocomplete"
+
+
+# Lazy loading nvm ( https://gist.github.com/fl0w/07ce79bd44788f647deab307c94d6922#gistcomment-2650045 )
+# Add every binary that requires nvm, npm or node to run to an array of node globals
+NODE_GLOBALS=(`find ~/.nvm/versions/node -maxdepth 3 -type l -wholename '*/bin/*' | xargs -n1 basename | sort | uniq`)
+NODE_GLOBALS+=("node")
+NODE_GLOBALS+=("nvm")
+
+# Lazy-loading nvm + npm on node globals call
+load_nvm () {
+  export NVM_DIR=~/.nvm
+  [ -s "$(brew --prefix nvm)/nvm.sh" ] && . "$(brew --prefix nvm)/nvm.sh"
+}
+
+# Making node global trigger the lazy loading
+for cmd in "${NODE_GLOBALS[@]}"; do
+  eval "${cmd}(){ unset -f ${NODE_GLOBALS}; load_nvm; ${cmd} \$@ }"
+done
+
+
+# Uncomment below to enable profiling
+# zprof
+
