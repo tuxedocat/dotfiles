@@ -21,9 +21,9 @@ Plug 'arcticicestudio/nord-vim'
 "" Language specific plugins
 " Plug 'derekwyatt/vim-scala'
 " Plug 'ensime/ensime-vim'
-Plug 'davidhalter/jedi-vim'
-Plug 'python/black'
-Plug 'jmcantrell/vim-virtualenv'
+Plug 'davidhalter/jedi-vim', { 'for': ['python', 'python3'] }
+Plug 'python/black', { 'for': ['python', 'python3'] }
+Plug 'jmcantrell/vim-virtualenv', { 'for': ['python', 'python3'] }
 Plug 'racer-rust/vim-racer'
 Plug 'rust-lang/rust.vim'
 Plug 'fatih/vim-go', { 'tag': 'v1.19' }
