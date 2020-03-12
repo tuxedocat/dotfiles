@@ -111,6 +111,8 @@ activate () {
         || [[ -f "./venv/bin/activate" ]] && { source ./venv/bin/activate ; return 0 } \
         || SRC=$(echo $(dirname $(poetry run which python 2>/dev/null ) 2>/dev/null )/activate ); \
            [[ -f ${SRC} ]] && { poetry shell ; return 0 } \
+        || SRC=$(echo $(dirname $(pipenv run which python 2>/dev/null ) 2>/dev/null )/activate ); \
+           [[ -f ${SRC} ]] && { pipenv shell ; return 0 } \
         || { echo "No virtualenv found in $(pwd)" ; return 1 }
 }
 
