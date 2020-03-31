@@ -1,15 +1,15 @@
 root = true
 
 [*]
-indent_style = space
-indent_size = 4
-end_of_line = lf
 charset = utf-8
+indent_style = space
+indent_size = 2
+end_of_line = lf
 insert_final_newline = true
 
-[*.{json,yml,yaml,YML,YAML}]
-indent_size = 2
+[*.{json,yml,yaml,YML,YAML,cson}]
 indent_style = space
+indent_size = 2
 end_of_line = lf
 trim_trailing_spaces = true
 insert_final_newline = true
@@ -23,6 +23,10 @@ indent_size = 2
 indent_style = space
 indent_size = 2
 
+[*.{py,pyx,pyi}]
+indent_style = space
+indent_size = 4
+
 [*.go]
 indent_style = tab
 indent_size = 4
@@ -30,3 +34,4 @@ indent_size = 4
 [Makefile]
 indent_style = tab
 indent_size = 4
+
