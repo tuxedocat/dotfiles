@@ -129,7 +129,7 @@ count-loc () {
 
 eval "$(pyenv init -)"
 export PATH="${HOME}/.poetry/bin:${PATH}"
-use-google-cloud-sdk
+source "${HOME}/.local/share/dephell/_dephell_zsh_autocomplete"
 
 [ -f "${HOME}/.fzf.zsh" ] && . ${HOME}/.fzf.zsh
 export FZF_DEFAULT_OPTS="--color 16"
@@ -137,8 +137,10 @@ export FZF_DEFAULT_OPTS="--color 16"
 eval "$(direnv hook zsh)"
 # eval "$(anyenv init -)"
 
-source "${HOME}/.local/share/dephell/_dephell_zsh_autocomplete"
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
 
+use-google-cloud-sdk
 
 ## Lazy loading nvm ( https://gist.github.com/fl0w/07ce79bd44788f647deab307c94d6922#gistcomment-2650045 )
 ## Add every binary that requires nvm, npm or node to run to an array of node globals
