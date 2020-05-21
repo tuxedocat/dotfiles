@@ -20,8 +20,7 @@ HISTSIZE=100000
 HISTFILESIZE=2000000
 export PROMPT_COMMAND="history -a; history -n"
 
-export EDITOR=nvim
-alias vim="nvim"
+export EDITOR=vim
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -132,14 +131,13 @@ export GOPATH="${HOME}/repos/gopher"
 export PATH="${HOME}/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 # eval "$(pyenv virtualenv-init -)"
-
 activate () {
-    [[ -f "./.venv/bin/activate" ]] && { source ./.venv/bin/activate ; return 0 ; } \
-        || [[ -f "./venv/bin/activate" ]] && { source ./venv/bin/activate ; return 0 ; } \
-        || { echo "No virtualenv found in $(pwd)" ; return 1 ; }
+    [[ -f "./.venv/bin/activate" ]] && { source ./.venv/bin/activate ; return 0 } \
+        || [[ -f "./venv/bin/activate" ]] && { source ./venv/bin/activate ; return 0 } \
+        || SRC=$(echo $(dirname $(poetry run which python 2>/dev/null ) 2>/dev/null )/activate ); \
+           [[ -f ${SRC} ]] && { poetry shell ; return 0 } \
+        || SRC=$(echo $(dirname $(pipenv --py 2>/dev/null ) 2>/dev/null )/activate ); \
+           [[ -f ${SRC} ]] && { pipenv shell ; return 0 } \
+        || { echo "No virtualenv found in $(pwd)" ; return 1 }
 }
 
-poetry_shell () {
-    SRC=$(echo $(dirname $(poetry run which python 2> /dev/null ) 2> /dev/null )/activate )
-    [[ -f ${SRC} ]] && source ${SRC} || echo "No poetry env found in $(pwd)"
-}
