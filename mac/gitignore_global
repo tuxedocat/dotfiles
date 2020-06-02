@@ -263,3 +263,8 @@ fabric.properties
 .metals/
 .bloop/
 project/metals.sbt
+
+# pyflow
+__pypackages__/
+
+.mypy_cache/
