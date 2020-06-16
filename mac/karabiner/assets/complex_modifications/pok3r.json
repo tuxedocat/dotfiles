@@ -2,7 +2,7 @@
   "title": "Pok3r macOS Japanese",
   "rules": [
     {
-      "description": "Toggle IME when pressed fn soley",
+      "description": "Toggle IME when pressed fn (solo)",
       "manipulators": [
         {
           "type": "basic",
