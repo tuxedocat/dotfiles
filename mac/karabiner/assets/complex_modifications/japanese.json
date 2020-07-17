@@ -1,0 +1,90 @@
+{
+  "title": "macOS Japanese common settings",
+  "rules": [
+    {
+      "description": "Toggle IME when pressed caps (solo)",
+      "manipulators": [
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "input_sources": [
+                {
+                  "language": "ja"
+                }
+              ],
+              "type": "input_source_if"
+            }
+          ],
+          "from": {
+            "key_code": "caps_lock",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "parameters": {
+            "basic.to_if_held_down_threshold_milliseconds": 100
+          },
+          "to": [
+            {
+              "key_code": "caps_lock",
+              "lazy": true
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "key_code": "caps_lock"
+            }
+          ],
+          "to_if_alone": [
+            {
+              "key_code": "japanese_eisuu"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "input_sources": [
+                {
+                  "language": "en"
+                }
+              ],
+              "type": "input_source_if"
+            }
+          ],
+          "from": {
+            "key_code": "caps_lock",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "parameters": {
+            "basic.to_if_held_down_threshold_milliseconds": 100
+          },
+          "to": [
+            {
+              "key_code": "caps_lock",
+              "lazy": true
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "key_code": "caps_lock"
+            }
+          ],
+          "to_if_alone": [
+            {
+              "key_code": "japanese_kana"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
