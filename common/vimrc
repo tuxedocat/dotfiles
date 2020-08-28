@@ -1,0 +1,12 @@
+""Plugins
+source ~/.vim/plugins.vim
+""Basics
+source ~/.vim/base.vim
+""Visual
+source ~/.vim/visual.vim
+""Compl.
+source ~/.vim/compl.vim
+""Keymaps
+source ~/.vim/keymap.vim
+""Lang. specific
+source ~/.vim/langs.vim
