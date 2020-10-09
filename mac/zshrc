@@ -79,6 +79,7 @@ alias ll='ls -lh'
 alias la='ls -alh'
 alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 export EDITOR="/usr/local/bin/vim"
+export VISUAL="/usr/local/bin/vim"
 
 # Keys, Completions
 bindkey -e
@@ -93,6 +94,11 @@ zle -N history-beginning-search-forward-end history-search-end
 bindkey "^P" history-beginning-search-backward-end
 bindkey "^N" history-beginning-search-forward-end
 
+# Enable Ctrl-x-e to edit command line
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '^xe' edit-command-line
+bindkey '^x^e' edit-command-line
 
 # Functions, and utils on start-up
 less_with_unbuffer () {
@@ -164,3 +170,4 @@ use-google-cloud-sdk
 # Uncomment below to enable profiling
 # zprof
 
+[ -f "/Users/tuxedocat/.ghcup/env" ] && source "/Users/tuxedocat/.ghcup/env" # ghcup-env
