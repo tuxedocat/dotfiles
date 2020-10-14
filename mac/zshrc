@@ -141,6 +141,7 @@ source "${HOME}/.local/share/dephell/_dephell_zsh_autocomplete"
 [ -f "${HOME}/.fzf.zsh" ] && . ${HOME}/.fzf.zsh
 export FZF_DEFAULT_OPTS="--color 16"
 
+export DIRENV_WARN_TIMEOUT=100s
 eval "$(direnv hook zsh)"
 # eval "$(anyenv init -)"
 
