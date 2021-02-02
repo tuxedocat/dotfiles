@@ -134,16 +134,22 @@ count-loc () {
 }
 
 
-export PATH="$HOME/.local/bin:${PATH}"
-export PATH="$HOME/.pyenv/bin:${PATH}"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+export GOPATH=$HOME/go
+[[ -d "$HOME/.local" ]] && export PATH="$HOME/.local/bin:${PATH}"
+if [ -d "$HOME/.pyenv" ]; then
+  export PATH="$HOME/.pyenv/bin:${PATH}"
+  eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
+fi
+export PATH="${PATH}:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/ProgramData/DockerDesktop/version-bin"
 
 export PATH="${HOME}/.poetry/bin:${PATH}"
-[ -f "$HOME/ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
+[[ -f "$HOME/ghcup/env" ]] && source "$HOME/.ghcup/env" # ghcup-env
 
-[ -f "${HOME}/.fzf.zsh" ] && . ${HOME}/.fzf.zsh
+[[ -f "${HOME}/.fzf.zsh" ]] && . ${HOME}/.fzf.zsh
 export FZF_DEFAULT_OPTS="--color 16"
+
+daemonize $(which blackd) &>/dev/null & 
 
 export DIRENV_WARN_TIMEOUT=100s
 eval "$(direnv hook zsh)"
@@ -156,4 +162,9 @@ export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
 
 # Uncomment below to enable profiling
 # zprof
+
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
 
