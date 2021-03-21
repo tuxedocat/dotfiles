@@ -1,7 +1,6 @@
 ""*****************************************************************************
 "" Visual Settings
 ""*****************************************************************************
-colorscheme nord
 syntax on
 set ruler
 set number
@@ -49,3 +48,5 @@ set titleold="Terminal"
 set titlestring=%F
 
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
+
+colorscheme nord
