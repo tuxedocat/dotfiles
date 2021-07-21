@@ -89,7 +89,6 @@ alias la='ls -alh'
 alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 export EDITOR="/usr/local/bin/vim"
 export VISUAL="/usr/local/bin/vim"
-
 # Keys, Completions
 bindkey -e
 bindkey "\e[Z" reverse-menu-complete
