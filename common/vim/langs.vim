@@ -28,3 +28,5 @@ au FileType rust nmap <leader>gd <Plug>(rust-doc)
 ""*****************************************************************************
 let g:pymode_rope = 0
 let g:virtualenv_auto_activate = 1
+let g:black_linelength = 120
+

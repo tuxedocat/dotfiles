@@ -29,7 +29,7 @@ Plug 'arcticicestudio/nord-vim'
 " Plug 'derekwyatt/vim-scala'
 " Plug 'ensime/ensime-vim'
 Plug 'davidhalter/jedi-vim', {'for': ['python', 'python3']}
-Plug 'python/black', {'for': ['python', 'python3']}
+Plug 'psf/black', {'for': ['python', 'python3']}
 Plug 'jmcantrell/vim-virtualenv', {'for': ['python', 'python3']}
 Plug 'racer-rust/vim-racer'
 Plug 'rust-lang/rust.vim'
