@@ -40,13 +40,12 @@ export NVM_LAZY_LOAD=true
 
 # Packages
 zplug "b4b4r07/emoji-cli"
-zplug "zsh-users/zsh-completions"
+# zplug "tylerreckart/hyperzsh", from:github, as:theme
 zplug "jackharrisonsherlock/common", from:github, as:theme
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zdharma/fast-syntax-highlighting"
 zplug "lukechilds/zsh-nvm"
 zplug "StackExchange/blackbox"
-zplug "supercrabtree/k"
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
@@ -72,6 +71,16 @@ zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' '+m:{[:upper:
 # Theming
 [ -f "${HOME}/.nord.dircolors" ] && eval $(gdircolors -b ${HOME}/.nord.dircolors)
 [ -n "$LS_COLORS" ] && zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+check_if_in_git_repo () {
+  if [[ ! -z $(common_git_status) ]]; then
+    PROMPT='$(common_host)$(common_current_dir)$(common_git_status)#$(git_prompt_short_sha)$(common_bg_jobs)$(common_return_status)'
+  else
+    PROMPT='$(common_host)$(common_current_dir)$(common_bg_jobs)$(common_return_status)'
+  fi
+}
+typeset -a precmd_functions
+precmd_functions+=(check_if_in_git_repo)
+RPROMPT=''
 
 # Aliases
 alias ls='gls -h --color=auto'
