@@ -1,6 +1,7 @@
 set ignore-case = true
 set ignore-space = at-eol
 set status-show-untracked-dirs = true
+# set status-show-untracked-files = false
 set line-graphics = utf-8
 
 ## --------------------------------------------------
