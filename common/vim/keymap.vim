@@ -10,6 +10,7 @@ inoremap <C-a> <Home>
 inoremap <C-e> <End>
 inoremap <C-f> <Right>
 inoremap <C-b> <Left>
+set pastetoggle=<F10>
 
 "" supertab
 let g:SuperTabDefaultCompletionType = 'context'
