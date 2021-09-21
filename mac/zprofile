@@ -13,7 +13,7 @@ export DOCKER_BUILDKIT=1
 export HOMEBREW_NO_AUTO_UPDATE=1
 
 export PGDATA="/usr/local/var/postgres"
-export GOPATH="${HOME}/repos/gopher"
+export GOPATH="${HOME}/go"
 [ -n "$GOPATH" ] && export PATH="${PATH}:$(go env GOPATH)/bin"
 
 eval "$(gh completion -s zsh)"
