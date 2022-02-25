@@ -28,8 +28,8 @@ Plug 'arcticicestudio/nord-vim'
 "" Language specific plugins
 " Plug 'derekwyatt/vim-scala'
 " Plug 'ensime/ensime-vim'
-Plug 'davidhalter/jedi-vim', {'for': ['python', 'python3']}
-Plug 'psf/black', {'for': ['python', 'python3']}
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
 Plug 'jmcantrell/vim-virtualenv', {'for': ['python', 'python3']}
 Plug 'racer-rust/vim-racer'
 Plug 'rust-lang/rust.vim'

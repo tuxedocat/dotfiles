@@ -1,12 +1,12 @@
+# Uncomment below to enable profiling
+# zmodload zsh/zprof
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
-# Uncomment below to enable profiling
-# zmodload zsh/zprof
 
 # Minimal settings
 export ZPLUG_HOME=/usr/local/opt/zplug
@@ -91,11 +91,11 @@ bindkey -a 'q' push-line
 bindkey -a 'H' run-help
 bindkey "^F" forward-char
 bindkey "^B" backward-char
-autoload history-search-end
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
-bindkey "^P" history-beginning-search-backward-end
-bindkey "^N" history-beginning-search-forward-end
+# autoload history-search-end
+# zle -N history-beginning-search-backward-end history-search-end
+# zle -N history-beginning-search-forward-end history-search-end
+# bindkey "^P" history-beginning-search-backward-end
+# bindkey "^N" history-beginning-search-forward-end
 
 # Enable Ctrl-x-e to edit command line
 autoload -U edit-command-line
@@ -109,6 +109,7 @@ less_with_unbuffer () {
 }
 alias ul=less_with_unbuffer
 
+# xenv
 use-google-cloud-sdk () {
     export CLOUDSDK_PYTHON=python3
     _google_cloud_sdk_dir="${HOME}/google-cloud-sdk/"
@@ -132,7 +133,6 @@ poetry_shell () {
     [[ -f ${SRC} ]] && source ${SRC} || echo "Failed to source ${SRC}"
 }
 
-
 count-loc () {
     find . -name "*.${1}" | xargs -L1 wc -l | tr -s " " | cut -d " " -f 2 | paste -sd+ - | bc
 }
@@ -153,12 +153,14 @@ eval "$(direnv hook zsh)"
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
 
-#export PATH="/usr/local/opt/terraform@0.13/bin:$PATH"
-
 use-google-cloud-sdk
+[[ $commands[kubectl] ]] && source <(kubectl completion zsh)
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Uncomment below to enable profiling
 # zprof
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
