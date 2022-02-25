@@ -8,7 +8,6 @@ set number
 let no_buffers_menu=1
 
 set mousemodel=popup
-set cursorline
 hi clear CursorLine
 set guioptions=egmrti
 set gfn=Monospace\ 10

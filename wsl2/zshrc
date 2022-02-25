@@ -1,6 +1,12 @@
 # Uncomment below to enable profiling
 # zmodload zsh/zprof
 
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
 # Sane default
 unsetopt correct_all
@@ -27,39 +33,44 @@ unsetopt flowcontrol
 setopt auto_menu         # show completion menu on succesive tab press
 setopt complete_in_word
 setopt always_to_end
-stty stop undef
-stty start undef
 export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
-
-# Minimal settings
-export ZPLUG_HOME=$HOME/.zplug
-source $ZPLUG_HOME/init.zsh
-
-# Package settings
-export NVM_LAZY_LOAD=true
-
-# Packages
-zplug "b4b4r07/emoji-cli"
-zplug "zsh-users/zsh-completions"
-zplug "jackharrisonsherlock/common", from:github, as:theme
-zplug "zsh-users/zsh-autosuggestions"
-zplug "zdharma/fast-syntax-highlighting"
-zplug "lukechilds/zsh-nvm"
-zplug "StackExchange/blackbox"
-zplug "supercrabtree/k"
-
-# Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
+# disable ctrl-s
+if [[ -t 0 && $- = *i* ]]
+then
+    stty -ixon
 fi
 
-fpath+=~/.zfunc
+### Added by Zinit's installer
+if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+        print -P "%F{160}▓▒░ The clone has failed.%f%b"
+fi
 
-# Then, source plugins and add commands to $PATH
-zplug load
+source "$HOME/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zinit-zsh/z-a-rust \
+    zinit-zsh/z-a-as-monitor \
+    zinit-zsh/z-a-patch-dl \
+    zinit-zsh/z-a-bin-gem-node
+
+### End of Zinit's installer chunk
+
+# Package settings
+# Packages
+zinit light "zsh-users/zsh-autosuggestions"
+zinit light "zdharma/fast-syntax-highlighting"
+zinit light "zsh-users/zsh-completions"
+zinit light "b4b4r07/emoji-cli"
+zinit ice depth=1; zinit light romkatv/powerlevel10k
+fpath+=~/.zfunc
 
 # Completions
 autoload -Uz compinit
@@ -79,6 +90,7 @@ alias ll='ls -lh'
 alias la='ls -alh'
 export EDITOR="vim"
 export VISUAL="vim"
+alias gibo='docker run --rm simonwhitaker/gibo'
 
 # Keys, Completions
 bindkey -e
@@ -104,6 +116,11 @@ less_with_unbuffer () {
     unbuffer "$@" |& less -SR
 }
 alias ul=less_with_unbuffer
+
+# macOS like open command
+open () {
+    xdg-open "$*" &
+}
 
 use-google-cloud-sdk () {
     export CLOUDSDK_PYTHON=python3
@@ -133,38 +150,54 @@ count-loc () {
     find . -name "*.${1}" | xargs -L1 wc -l | tr -s " " | cut -d " " -f 2 | paste -sd+ - | bc
 }
 
-
-export GOPATH=$HOME/go
+# ---------------------------------------------------------------------
+export PATH="${PATH}:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/ProgramData/DockerDesktop/version-bin"
 [[ -d "$HOME/.local" ]] && export PATH="$HOME/.local/bin:${PATH}"
+
+# Run dockerd
+sudo service docker status &>/dev/null || sudo service docker start &>/dev/null 
+
+# Python
 if [ -d "$HOME/.pyenv" ]; then
   export PATH="$HOME/.pyenv/bin:${PATH}"
   eval "$(pyenv init -)"
   eval "$(pyenv virtualenv-init -)"
 fi
-export PATH="${PATH}:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/ProgramData/DockerDesktop/version-bin"
-
 export PATH="${HOME}/.poetry/bin:${PATH}"
+use-google-cloud-sdk
+# use daemonize since WSL2 doesn't have systemd
+daemonize $(which blackd) &>/dev/null
+
+# Rust
+[[ -d "$HOME/.cargo" ]] && source "$HOME/.cargo/env"
+
+# Haskell
 [[ -f "$HOME/ghcup/env" ]] && source "$HOME/.ghcup/env" # ghcup-env
 
-[[ -f "${HOME}/.fzf.zsh" ]] && . ${HOME}/.fzf.zsh
-export FZF_DEFAULT_OPTS="--color 16"
+# Golang
+export GOPATH=$HOME/go
 
-daemonize $(which blackd) &>/dev/null & 
-
+# *env tools
 export DIRENV_WARN_TIMEOUT=100s
 eval "$(direnv hook zsh)"
-# eval "$(anyenv init -)"
-
-use-google-cloud-sdk
 
 # X11
 export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
 
-# Uncomment below to enable profiling
-# zprof
+# fzf
+[[ -f "${HOME}/.fzf.zsh" ]] && . ${HOME}/.fzf.zsh
+export FZF_DEFAULT_OPTS="--color 16"
 
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+# Java sdkman
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
 
+# Volta
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Uncomment below to enable profiling
+# zprof

@@ -14,3 +14,4 @@ export DOCKER_BUILDKIT=1
 [ -n "$GOPATH" ] && export PATH="${PATH}:$(go env GOPATH)/bin"
 
 eval "$(gh completion -s zsh)"
+_byobu_sourced=1 . /usr/bin/byobu-launch 2>/dev/null || true
