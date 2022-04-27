@@ -1,21 +1,13 @@
 # Uncomment below to enable profiling
 # zmodload zsh/zprof
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # Minimal settings
-export ZPLUG_HOME=/usr/local/opt/zplug
+export ZPLUG_HOME=/opt/homebrew/opt/zplug
 source $ZPLUG_HOME/init.zsh
 
 ## ---- Package settings
 # Packages
 zplug "b4b4r07/emoji-cli"
-zplug "romkatv/powerlevel10k", as:theme, depth:1
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zdharma/fast-syntax-highlighting"
 
@@ -59,6 +51,7 @@ setopt auto_menu         # show completion menu on succesive tab press
 setopt complete_in_word
 setopt always_to_end
 export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+zle_highlight+=(paste:none)
 # disable ctrl-s
 if [[ -t 0 && $- = *i* ]]
 then
@@ -82,8 +75,6 @@ alias ls='gls -h --color=auto'
 alias ll='ls -lh'
 alias la='ls -alh'
 alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
-export EDITOR="/usr/local/bin/vim"
-export VISUAL="/usr/local/bin/vim"
 # Keys, Completions
 bindkey -e
 bindkey "\e[Z" reverse-menu-complete
@@ -91,11 +82,11 @@ bindkey -a 'q' push-line
 bindkey -a 'H' run-help
 bindkey "^F" forward-char
 bindkey "^B" backward-char
-# autoload history-search-end
-# zle -N history-beginning-search-backward-end history-search-end
-# zle -N history-beginning-search-forward-end history-search-end
-# bindkey "^P" history-beginning-search-backward-end
-# bindkey "^N" history-beginning-search-forward-end
+autoload history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^P" history-beginning-search-backward-end
+bindkey "^N" history-beginning-search-forward-end
 
 # Enable Ctrl-x-e to edit command line
 autoload -U edit-command-line
@@ -109,9 +100,17 @@ less_with_unbuffer () {
 }
 alias ul=less_with_unbuffer
 
+# fbr - checkout git branch
+fbr() {
+  local branches branch
+  branches=$(git branch -vv) &&
+  branch=$(echo "$branches" | fzf +m) &&
+  git switch $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
+}
+
 # xenv
 use-google-cloud-sdk () {
-    export CLOUDSDK_PYTHON=python3
+    export CLOUDSDK_PYTHON=/opt/homebrew/bin/python3
     _google_cloud_sdk_dir="${HOME}/google-cloud-sdk/"
     [ -f "${_google_cloud_sdk_dir}path.zsh.inc" ] && source "${_google_cloud_sdk_dir}path.zsh.inc"
     [ -f "${_google_cloud_sdk_dir}completion.zsh.inc" ] && source "${_google_cloud_sdk_dir}completion.zsh.inc"
@@ -137,21 +136,14 @@ count-loc () {
     find . -name "*.${1}" | xargs -L1 wc -l | tr -s " " | cut -d " " -f 2 | paste -sd+ - | bc
 }
 
-eval "$(pyenv init -)"
-export PATH="${HOME}/.poetry/bin:${PATH}"
-source "${HOME}/.local/share/dephell/_dephell_zsh_autocomplete"
-
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
-
-[ -f "${HOME}/.fzf.zsh" ] && . ${HOME}/.fzf.zsh
-export FZF_DEFAULT_OPTS="--color 16"
-
+source /opt/homebrew/opt/asdf/libexec/asdf.sh
 export DIRENV_WARN_TIMEOUT=100s
 eval "$(direnv hook zsh)"
 
-export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
+export PATH="${HOME}/.poetry/bin:${PATH}"
+
+[ -f "${HOME}/.fzf.zsh" ] && . ${HOME}/.fzf.zsh
+export FZF_DEFAULT_OPTS="--color 16"
 
 use-google-cloud-sdk
 [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
@@ -159,8 +151,11 @@ use-google-cloud-sdk
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+# export LIMA_INSTANCE=colima
+eval "$(starship init zsh)"
+
 # Uncomment below to enable profiling
 # zprof
 
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
