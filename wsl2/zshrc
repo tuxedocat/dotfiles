@@ -1,13 +1,6 @@
 # Uncomment below to enable profiling
 # zmodload zsh/zprof
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # Sane default
 unsetopt correct_all
 setopt no_beep
@@ -69,7 +62,6 @@ zinit light "zsh-users/zsh-autosuggestions"
 zinit light "zdharma/fast-syntax-highlighting"
 zinit light "zsh-users/zsh-completions"
 zinit light "b4b4r07/emoji-cli"
-zinit ice depth=1; zinit light romkatv/powerlevel10k
 fpath+=~/.zfunc
 
 # Completions
@@ -88,8 +80,6 @@ zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' '+m:{[:upper:
 alias ls='ls -h --color=auto'
 alias ll='ls -lh'
 alias la='ls -alh'
-export EDITOR="vim"
-export VISUAL="vim"
 alias gibo='docker run --rm simonwhitaker/gibo'
 
 # Keys, Completions
@@ -127,7 +117,7 @@ use-google-cloud-sdk () {
     _google_cloud_sdk_dir="${HOME}/google-cloud-sdk/"
     [ -f "${_google_cloud_sdk_dir}path.zsh.inc" ] && source "${_google_cloud_sdk_dir}path.zsh.inc"
     [ -f "${_google_cloud_sdk_dir}completion.zsh.inc" ] && source "${_google_cloud_sdk_dir}completion.zsh.inc"
-    export CLOUDSDK_PYTHON=$HOME/.pyenv/shims/python3
+    export CLOUDSDK_PYTHON=/usr/bin/python3
 }
 
 activate () {
@@ -151,21 +141,17 @@ count-loc () {
     find . -name "*.${1}" | xargs -L1 wc -l | tr -s " " | cut -d " " -f 2 | paste -sd+ - | bc
 }
 
-# ---------------------------------------------------------------------
-export PATH="${PATH}:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/ProgramData/DockerDesktop/version-bin"
 [[ -d "$HOME/.local" ]] && export PATH="$HOME/.local/bin:${PATH}"
 
-# Run dockerd
-sudo service docker status &>/dev/null || sudo service docker start &>/dev/null 
+# asdf
+source "$HOME/.asdf/asdf.sh"
+# append completions to fpath
+fpath=(${ASDF_DIR}/completions $fpath)
+# initialise completions with ZSH's compinit
+autoload -Uz compinit && compinit
 
 # Python
-if [ -d "$HOME/.pyenv" ]; then
-  export PATH="$HOME/.pyenv/bin:${PATH}"
-  eval "$(pyenv init -)"
-  eval "$(pyenv virtualenv-init -)"
-fi
 export PATH="${HOME}/.poetry/bin:${PATH}"
-use-google-cloud-sdk
 # use daemonize since WSL2 doesn't have systemd
 daemonize $(which blackd) &>/dev/null
 
@@ -173,17 +159,15 @@ daemonize $(which blackd) &>/dev/null
 [[ -d "$HOME/.cargo" ]] && source "$HOME/.cargo/env"
 
 # Haskell
-[[ -f "$HOME/ghcup/env" ]] && source "$HOME/.ghcup/env" # ghcup-env
+[[ -f "$HOME/ghcup/env" ]] && source "$HOME/.ghcup/env"
 
 # Golang
 export GOPATH=$HOME/go
+[ -n "$GOPATH" ] && export PATH="${PATH}:$(go env GOPATH)/bin"
 
-# *env tools
+# some *env tools
 export DIRENV_WARN_TIMEOUT=100s
 eval "$(direnv hook zsh)"
-
-# X11
-export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
 
 # fzf
 [[ -f "${HOME}/.fzf.zsh" ]] && . ${HOME}/.fzf.zsh
@@ -197,8 +181,9 @@ export SDKMAN_DIR="$HOME/.sdkman"
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+use-google-cloud-sdk
+eval "$(gh completion -s zsh)"
+eval "$(starship init zsh)"
 
 # Uncomment below to enable profiling
 # zprof

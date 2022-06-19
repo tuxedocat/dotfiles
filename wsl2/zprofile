@@ -2,16 +2,10 @@
 # Executes commands at login pre-zshrc.
 #
 #
-## Envvars
-fpath+=~/.zfunc
-export EDITOR='vim'
-export VISUAL='code'
-export PAGER='less'
-export LANG=en_US.UTF-8
-export LC_CTYPE=en_US.UTF-8
-export DOCKER_BUILDKIT=1
-
-[ -n "$GOPATH" ] && export PATH="${PATH}:$(go env GOPATH)/bin"
-
-eval "$(gh completion -s zsh)"
 _byobu_sourced=1 . /usr/bin/byobu-launch 2>/dev/null || true
+
+# Run dockerd
+sudo service docker status &>/dev/null || sudo service docker start &>/dev/null 
+
+# X11
+export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0

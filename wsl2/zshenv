@@ -7,8 +7,10 @@
 setopt no_global_rcs
 
 export EDITOR='vim'
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:${PATH}"
-export PATH="${PATH}:/usr/local/opt/go/libexec/bin"
-export PATH="${HOME}/.cargo/bin:${PATH}"
-
-source "$HOME/.cargo/env"
+export VISUAL='vim'
+export PAGER='less'
+export LANG=en_US.UTF-8
+export LC_CTYPE=en_US.UTF-8
+export DOCKER_BUILDKIT=1
+# export PATH="${PATH}:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/ProgramData/DockerDesktop/version-bin"
+# export PATH="${PATH}:/mnt/c/ProgramData/DockerDesktop/version-bin"
